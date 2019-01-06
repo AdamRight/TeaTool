@@ -3,7 +3,7 @@ package com.tea.teatool.flow;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.teatool.R;
+import com.tea.teatool.R;
 
 
 public class FlowActivity extends AppCompatActivity {
