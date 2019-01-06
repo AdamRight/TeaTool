@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
     android:horizontalGap="0.4%p"
-    android:keyHeight="@dimen/keyboard_height"
-    android:keyWidth="32.8%p"
-    android:verticalGap="1.5dp">
+    android:keyHeight="48dip"
+    android:keyWidth="24.7%p"
+    android:verticalGap="1.5dip">
     <Row>
         <Key
             android:codes="49"
@@ -14,6 +14,9 @@
         <Key
             android:codes="51"
             android:keyLabel="3" />
+        <Key
+            android:codes="-22"
+            android:keyLabel="abc"/>
     </Row>
     <Row>
         <Key
@@ -25,6 +28,9 @@
         <Key
             android:codes="54"
             android:keyLabel="6" />
+        <Key
+            android:codes="-23"
+            android:keyLabel="符"/>
     </Row>
     <Row>
         <Key
@@ -36,19 +42,23 @@
         <Key
             android:codes="57"
             android:keyLabel="9" />
+        <Key
+            android:codes="-5"
+            android:isRepeatable="true"
+            android:keyIcon="@mipmap/ic_delete" />
     </Row>
     <Row>
         <Key
-            android:codes="-3"
-            android:keyEdgeFlags="right"
-            android:keyLabel="完成" />
+            android:codes="42"
+            android:keyLabel="*" />
+        <Key
+            android:codes="35"
+            android:keyLabel="#" />
         <Key
             android:codes="48"
             android:keyLabel="0" />
         <Key
-            android:codes="-5"
-            android:isRepeatable="true"
-            android:keyIcon="@mipmap/ic_launcher" />
-
+            android:codes="-3"
+            android:keyLabel="完成" />
     </Row>
 </Keyboard>

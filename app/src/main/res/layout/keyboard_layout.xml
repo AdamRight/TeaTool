@@ -5,7 +5,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
         android:paddingTop="1.5dp"
-        android:background="@color/bg_yellow_f9e59a"
+        android:background="@color/md_grey_db"
         android:gravity="bottom"
         android:orientation="vertical"
         android:visibility="gone" >
@@ -36,7 +36,7 @@
             android:shadowRadius="0.0"
             android:keyTextSize="@dimen/keyboard_key_text_size"
             android:keyBackground="@drawable/keyboard_key_btn_selector"
-            android:keyTextColor="@color/bg_orange_ff7e2a" />
+            android:keyTextColor="@color/colorPrimary" />
 
 
 </LinearLayout>

@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.tea.teatool.flow.FlowActivity;
 import com.tea.teatool.keyboard.KeyBoardActivity;
-import com.teatool.R;
 
 import java.util.ArrayList;
 

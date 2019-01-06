@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.teatool.R;
-
 import java.util.ArrayList;
 
 /**
@@ -71,7 +69,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         public NormalHolder(View itemView) {
             super(itemView);
 
-            mTV = (TextView) itemView.findViewById(com.teatool.R.id.item_tv);
+            mTV = (TextView) itemView.findViewById(R.id.item_tv);
 //            mTV.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {

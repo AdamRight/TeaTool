@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 
-import com.teatool.R;
+import com.tea.teatool.R;
 
 public class KeyBoardActivity extends AppCompatActivity {
 
@@ -12,7 +12,7 @@ public class KeyBoardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_key_board);
-        EditText et = (EditText) findViewById(R.id.et);
+        EditText et = findViewById(R.id.et);
         new KeyboardHelper(this, et);
     }
 

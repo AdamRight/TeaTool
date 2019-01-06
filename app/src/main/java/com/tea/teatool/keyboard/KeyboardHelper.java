@@ -24,7 +24,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 
-import com.teatool.R;
+import com.tea.teatool.R;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -39,13 +39,30 @@ public class KeyboardHelper implements View.OnClickListener, View.OnFocusChangeL
     private final static int TAG_ET = R.id.keyboard_view;
     private final static int TAG_TOLAST = TAG_ET + 1;
 
-    protected Keyboard keyMain;// 主键盘
+    protected Keyboard keyNumber;// 主键盘
+    protected Keyboard keySymbol;
+    protected Keyboard keyEnglish;
 
     // private PopupWindow keyboardWindow;
     private View keyboardLayout;
     protected KeyboardView keyboardView;
     private Activity mContext;
     private boolean isShowing = false;//是否正在显示
+
+    /**
+     * 随机键值标志位，默认false
+     */
+    protected boolean shouldRandom = false;
+
+    /**
+     * 是否为数字键盘
+     */
+    private boolean isNumber = false;
+
+    /**
+     * 是否大写
+     */
+    private boolean isUpper = false;
 
     public KeyboardHelper(Fragment fragment) {
         this(fragment.getActivity(), null);
@@ -70,7 +87,7 @@ public class KeyboardHelper implements View.OnClickListener, View.OnFocusChangeL
     public KeyboardHelper(Context mActivity, EditText editText, boolean toLast) {
         this.mContext = (Activity) mActivity;
         View keyboard = createKeyboard(mActivity);
-        keyboardView = (KeyboardView) keyboard.findViewById(R.id.keyboard_view);
+        keyboardView = keyboard.findViewById(R.id.keyboard_view);
         keyboardLayout = keyboard.findViewById(R.id.keyboard_view_layout);
         initKeyboar(mActivity);
         addEditText(editText, toLast);
@@ -83,7 +100,7 @@ public class KeyboardHelper implements View.OnClickListener, View.OnFocusChangeL
      * @return
      */
     private FrameLayout getRootView(Activity mActivity) {
-        FrameLayout rootView = (FrameLayout) mActivity.getWindow().getDecorView().findViewById(android.R.id.content);
+        FrameLayout rootView = mActivity.getWindow().getDecorView().findViewById(android.R.id.content);
         return rootView;
     }
 
@@ -94,21 +111,14 @@ public class KeyboardHelper implements View.OnClickListener, View.OnFocusChangeL
      * @return
      */
     protected void initKeyboar(Context mActivity) {
-        keyMain = new Keyboard(mActivity.getApplicationContext(), R.xml.keyboard_symbols);
-        keyboardView.setKeyboard(keyMain);
+        //tea_keyboard_number   tea_keyboard_symbols  tea_keyboard_english
+        keyNumber = new Keyboard(mActivity.getApplicationContext(), R.xml.tea_keyboard_number);
+        keySymbol = new Keyboard(mActivity.getApplicationContext(), R.xml.tea_keyboard_symbols);
+        keyEnglish = new Keyboard(mActivity.getApplicationContext(), R.xml.tea_keyboard_english);
+        keyboardView.setKeyboard(keyEnglish);
         keyboardView.setEnabled(true);
         keyboardView.setPreviewEnabled(false);
         keyboardView.setOnKeyboardActionListener(this);
-    }
-
-    /**
-     * 添加键盘布局
-     *
-     * @param editText
-     * @return
-     */
-    public KeyboardHelper addEditText(EditText editText) {
-        return addEditText(editText, false);
     }
 
     /**
@@ -133,19 +143,6 @@ public class KeyboardHelper implements View.OnClickListener, View.OnFocusChangeL
             changeSafeDisplay(editText, false);
         }
         return this;
-    }
-
-    /**
-     * 检测当前绑定的密码输入框是否是密码输入
-     *
-     * @param showPwd
-     * @return
-     */
-    public KeyboardHelper changeSafeDisplay(boolean showPwd) {
-        EditText editText = getEditTextByTag();
-        if (editText == null) return this;
-
-        return changeSafeDisplay(editText, showPwd);
     }
 
     /**
@@ -261,18 +258,28 @@ public class KeyboardHelper implements View.OnClickListener, View.OnFocusChangeL
     @Override
     public void onKey(int primaryCode, int[] keyCodes) {
         EditText editText = getEditTextByTag();
-        if (editText == null) return;
-
+        if (editText == null)
+            return;
         Editable editable = editText.getText();
         int start = editText.getSelectionStart();
+
         if (primaryCode == Keyboard.KEYCODE_CANCEL) {// 完成
             hideKeyboard(editText);
-        } else if (primaryCode == Keyboard.KEYCODE_DELETE) {// 回退
+        } else if (primaryCode == Keyboard.KEYCODE_DELETE) {//删除回退
             if (!TextUtils.isEmpty(editable)) {
                 if (start > 0) {
                     editable.delete(start - 1, start);
                 }
             }
+        } else if (primaryCode == -21){//数字键盘
+            keyboardView.setKeyboard(keyNumber);
+        } else if (primaryCode == -22){//英文键盘
+            keyboardView.setKeyboard(keyEnglish);
+        } else if (primaryCode == -23){//符号
+            keyboardView.setKeyboard(keySymbol);
+        } else if (primaryCode == Keyboard.KEYCODE_SHIFT) {//大小写切换
+            changeKey();
+            keyboardView.setKeyboard(keyEnglish);
         } else {
             editable.insert(start, Character.toString((char) primaryCode));
         }
@@ -285,22 +292,6 @@ public class KeyboardHelper implements View.OnClickListener, View.OnFocusChangeL
             return null;
         }
         return (EditText) arg0;
-    }
-
-
-    /**
-     * 随机键值标志位，默认false
-     */
-    protected boolean shouldRandom = false;
-
-    /**
-     * 是否生成随机键值
-     *
-     * @param shouldRandom
-     */
-    public KeyboardHelper setShouldRandom(boolean shouldRandom) {
-        this.shouldRandom = shouldRandom;
-        return this;
     }
 
     public void showKeyboard(@NonNull EditText editText) {
@@ -324,17 +315,36 @@ public class KeyboardHelper implements View.OnClickListener, View.OnFocusChangeL
     }
 
     /**
-     * 以pop的方式弹出键盘
-     * @param editText
+     * 键盘大小写切换
      */
-//    private void showKeyBoardInPopwindow(@NonNull EditText editText) {
-//        Resources resources = editText.getContext().getApplicationContext().getResources();
-//        DisplayMetrics dm = resources.getDisplayMetrics();
-//        int width3 = dm.widthPixels;
-//        int height3 = dm.heightPixels;
-//        keyboardWindow.showAtLocation(editText.getRootView(), Gravity.BOTTOM, 0, -height3);
-//        keyboardWindow.showAtLocation(editText.getRootView(), Gravity.BOTTOM, 0, 0);
-//    }
+    private void changeKey() {
+        List<Key> keylist = keyEnglish.getKeys();
+        if (isUpper) {
+            isUpper = false;
+            for (Key key : keylist) {
+                if (key.label != null && isword(key.label.toString())) {
+                    key.label = key.label.toString().toLowerCase();
+                    key.codes[0] = key.codes[0] + 32;
+                }
+                if (key.codes[0] == -1) {
+                    key.icon = mContext.getResources().getDrawable(
+                            R.mipmap.keyboard_shift);
+                }
+            }
+        } else {// 小写切换大写
+            isUpper = true;
+            for (Key key : keylist) {
+                if (key.label != null && isword(key.label.toString())) {
+                    key.label = key.label.toString().toUpperCase();
+                    key.codes[0] = key.codes[0] - 32;
+                }
+                if (key.codes[0] == -1) {
+                    key.icon = mContext.getResources().getDrawable(
+                            R.mipmap.keyboard_shift_up);
+                }
+            }
+        }
+    }
 
     /**
      * 以添加子view 的方式显示键盘
@@ -391,8 +401,6 @@ public class KeyboardHelper implements View.OnClickListener, View.OnFocusChangeL
         keyboardView.setTag(TAG_ET, null);
         int visibility = keyboardLayout.getVisibility();
         if (visibility == View.VISIBLE || visibility == View.INVISIBLE) {
-//            hideKeyboard();
-//            removeViewHideKeyboard();
             outerAnimation(keyboardLayout);
         }
     }
@@ -423,7 +431,7 @@ public class KeyboardHelper implements View.OnClickListener, View.OnFocusChangeL
     }
 
     protected void randomKey() {
-        List<Key> keyList = keyMain.getKeys();
+        List<Key> keyList = keyNumber.getKeys();
         // 查找出0-9的数字键
         List<Key> newkeyList = new ArrayList<Key>();
         for (int i = 0; i < keyList.size(); i++) {
@@ -454,7 +462,7 @@ public class KeyboardHelper implements View.OnClickListener, View.OnFocusChangeL
             newkeyList.get(i).label = resultList.get(i).getLable();
             newkeyList.get(i).codes[0] = resultList.get(i).getCode();
         }
-        keyboardView.setKeyboard(keyMain);
+        keyboardView.setKeyboard(keyNumber);
     }
 
     /**
@@ -468,30 +476,6 @@ public class KeyboardHelper implements View.OnClickListener, View.OnFocusChangeL
                 R.layout.keyboard_layout, null);
         return contentView;
     }
-
-//    protected PopupWindow createKeyboardWindow(Context context) {
-//        if (keyboardWindow != null)
-//            return keyboardWindow;
-//
-//        // 一个自定义的布局，作为显示的内容
-//        View contentView = LayoutInflater.from(context).inflate(
-//                R.layout.keyboard_layout, null);
-//
-//        Resources resources = context.getApplicationContext().getResources();
-//        DisplayMetrics dm = resources.getDisplayMetrics();
-//        int width3 = dm.widthPixels;
-//        int height3 = dm.heightPixels;
-//
-//        PopupWindow popupWindow = new PopupWindow(contentView,
-//                width3, ViewGroup.LayoutParams.WRAP_CONTENT, true);
-//
-//        popupWindow.setTouchable(true);
-//        popupWindow.setOutsideTouchable(true);
-//        popupWindow.setBackgroundDrawable(new ColorDrawable(context.getResources().getColor(R.color.transparent)));
-//        popupWindow.setAnimationStyle(R.style.keyboard_anim_style);
-//
-//        return popupWindow;
-//    }
 
     private static boolean isPasswordInputType(int inputType) {
         final int variation =

@@ -5,7 +5,7 @@ public class KeyModel {
 	private Integer code;
 	private String lable;
 	
-	public KeyModel(Integer code, String lable){
+	public KeyModel(Integer code,String lable){
 		this.code = code;
 		this.lable = lable;
 	}
