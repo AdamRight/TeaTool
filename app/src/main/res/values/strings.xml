@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TeaTool</string>
+    <string name="keyboard_title_text">安全输入</string>
+
 </resources>

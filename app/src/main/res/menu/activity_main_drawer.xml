@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/group_item_github"
+            android:icon="@mipmap/icon_menu1"
+            android:title="menu1"/>
+        <item
+            android:id="@+id/group_item_more"
+            android:icon="@mipmap/icon_menu1"
+            android:title="menu2"/>
+
+        <item
+            android:id="@+id/group_item_qr_code"
+            android:icon="@mipmap/icon_menu1"
+            android:title="menu3"/>
+
+        <item
+            android:id="@+id/group_item_share_project"
+            android:icon="@mipmap/icon_menu1"
+            android:title="menu4"/>
+    </group>
+
+    <item android:title="选项">
+        <menu>
+            <item
+                android:id="@+id/item_model"
+                android:icon="@mipmap/icon_menu2"
+                android:title="menu5"/>
+
+            <item
+                android:id="@+id/item_about"
+                android:icon="@mipmap/icon_menu2"
+                android:title="menu6"/>
+        </menu>
+    </item>
+
+</menu>
