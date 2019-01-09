@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tea.teatool">
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -17,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".keyboard.KeyBoardActivity" />
-        <activity android:name=".flow.FlowActivity"></activity>
+        <activity android:name=".flow.FlowActivity" />
+        <activity android:name=".webshop.WebShopActivity"></activity>
     </application>
 
 </manifest>

@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.tea.teatool.flow.FlowActivity;
 import com.tea.teatool.keyboard.KeyBoardActivity;
+import com.tea.teatool.webshop.WebShopActivity;
 
 import java.util.ArrayList;
 
@@ -124,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
     private void generateDatas(){
         mDatas.add("自定义键盘");
         mDatas.add("自定义流式布局");
+        mDatas.add("webshop");
     }
 
     @Override
@@ -134,6 +136,9 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
                 break;
             case 1:
                 startActivity(new Intent(this, FlowActivity.class));
+                break;
+            case 2:
+                startActivity(new Intent(this, WebShopActivity.class));
                 break;
         }
     }

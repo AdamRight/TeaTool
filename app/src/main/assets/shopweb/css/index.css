@@ -1,0 +1,55 @@
+.jd_layout{
+    width: 100%;
+    max-width: 640px;
+    min-width: 320px;
+    margin: 0 auto;
+    height: 1000px;
+    background: #ccc;
+}
+/*¶¥²¿ËÑË÷¿é*/
+.jd_search{
+    width: 100%;
+    max-width: 640px;
+    height: 48px;
+    background: #e92322;
+    position: fixed;
+}
+.jd_logo{
+    width: 48px;
+    height: 48px;
+    position:absolute ;
+    left: 0;
+    top: 0;
+    background: url("../images/jd_logo.png");
+}
+.jd_login{
+    width: 48px;
+    height: 48px;
+    position:absolute ;
+    right: 0;
+    top: 0;
+    line-height: 48px;
+    color: #ffffff;
+}
+.jd_searchBox{
+    padding-left: 58px;
+    padding-right: 58px;
+    height: 100%;
+    width: 100%;
+}
+.jd_searchBox > input{
+    width: 100%;
+    height: 38px;
+    margin-top: 5px;
+    border-radius: 19px;
+    padding-left: 30px;
+    color: #666666;
+}
+.jd_searchBox::before{
+    content: "";
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    background: url("../images/jd_top_fdj.png");
+    margin-top: 8px;
+}
