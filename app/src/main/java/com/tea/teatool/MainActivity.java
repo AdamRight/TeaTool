@@ -16,7 +16,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.tea.teatool.MyTextView.MyTextViewActivity;
+import com.tea.teatool.teatextview.TeaTextViewActivity;
 import com.tea.teatool.flow.FlowActivity;
 import com.tea.teatool.keyboard.KeyBoardActivity;
 import com.tea.teatool.webshop.WebShopActivity;
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
                 startActivity(new Intent(this, WebShopActivity.class));
                 break;
             case 3:
-                startActivity(new Intent(this, MyTextViewActivity.class));
+                startActivity(new Intent(this, TeaTextViewActivity.class));
                 break;
         }
     }

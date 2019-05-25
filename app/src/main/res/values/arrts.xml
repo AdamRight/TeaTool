@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TeaTextView">
+        <attr name="teaText" format="string"/>
+        <attr name="teaTextColor" format="color"/>
+        <attr name="teaTextSize" format="dimension"/>
+    </declare-styleable>
+
+</resources>

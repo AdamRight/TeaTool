@@ -21,7 +21,7 @@
         <activity android:name=".keyboard.KeyBoardActivity" />
         <activity android:name=".flow.FlowActivity" />
         <activity android:name=".webshop.WebShopActivity" />
-        <activity android:name=".MyTextView.MyTextViewActivity"></activity>
+        <activity android:name=".teatextview.TeaTextViewActivity"></activity>
     </application>
 
 </manifest>
