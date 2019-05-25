@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.tea.teatool.MyTextView.MyTextViewActivity;
 import com.tea.teatool.flow.FlowActivity;
 import com.tea.teatool.keyboard.KeyBoardActivity;
 import com.tea.teatool.webshop.WebShopActivity;
@@ -126,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add("自定义键盘");
         mDatas.add("自定义流式布局");
         mDatas.add("webshop");
+        mDatas.add("手动实现TextView");
     }
 
     @Override
@@ -139,6 +141,9 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
                 break;
             case 2:
                 startActivity(new Intent(this, WebShopActivity.class));
+                break;
+            case 3:
+                startActivity(new Intent(this, MyTextViewActivity.class));
                 break;
         }
     }
