@@ -15,4 +15,9 @@
         <attr name="middleTestSize" format="dimension"/>
     </declare-styleable>
 
+    <declare-styleable name="ClipTextView">
+        <attr name="originColor" format="color"/>
+        <attr name="changeColor" format="color"/>
+    </declare-styleable>
+
 </resources>

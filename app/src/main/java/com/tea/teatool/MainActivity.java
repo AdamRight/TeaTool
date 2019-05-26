@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.tea.teatool.arcspeed.ArcSpeedActivity;
+import com.tea.teatool.cliptext.ClipTextActivity;
 import com.tea.teatool.flow.FlowActivity;
 import com.tea.teatool.keyboard.KeyBoardActivity;
 import com.tea.teatool.teatextview.TeaTextViewActivity;
@@ -130,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add("webshop");
         mDatas.add("手动实现TextView");
         mDatas.add("自定义圆弧加载");
+        mDatas.add("自定义文字变色");
     }
 
     @Override
@@ -149,6 +151,9 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
                 break;
             case 4:
                 startActivity(new Intent(this, ArcSpeedActivity.class));
+                break;
+            case 5:
+                startActivity(new Intent(this, ClipTextActivity.class));
                 break;
         }
     }

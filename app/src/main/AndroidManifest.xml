@@ -22,7 +22,8 @@
         <activity android:name=".flow.FlowActivity" />
         <activity android:name=".webshop.WebShopActivity" />
         <activity android:name=".teatextview.TeaTextViewActivity" />
-        <activity android:name=".arcspeed.ArcSpeedActivity"></activity>
+        <activity android:name=".arcspeed.ArcSpeedActivity" />
+        <activity android:name=".cliptext.ClipTextActivity"></activity>
     </application>
 
 </manifest>
