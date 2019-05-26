@@ -7,4 +7,12 @@
         <attr name="teaTextSize" format="dimension"/>
     </declare-styleable>
 
+    <declare-styleable name="ArcSpeedView">
+        <attr name="bottomColor" format="color"/>
+        <attr name="topColor" format="color"/>
+        <attr name="middleTextColor" format="color"/>
+        <attr name="borderWidth" format="dimension"/>
+        <attr name="middleTestSize" format="dimension"/>
+    </declare-styleable>
+
 </resources>

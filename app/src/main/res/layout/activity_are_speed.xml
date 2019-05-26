@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tea.teatool.arcspeed.ArcSpeedActivity">
+
+    <com.tea.teatool.arcspeed.ArcSpeedView
+        android:id="@+id/arc_speed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:borderWidth="20dp"
+        app:bottomColor="@color/bg_yellow_f9e59a"
+        app:middleTestSize="30sp"
+        app:middleTextColor="@color/bg_orange_ff7e2a"
+        app:topColor="@color/bg_orange_ff7e2a" />
+
+</RelativeLayout>

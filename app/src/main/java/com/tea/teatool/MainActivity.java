@@ -16,9 +16,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.tea.teatool.teatextview.TeaTextViewActivity;
+import com.tea.teatool.arcspeed.ArcSpeedActivity;
 import com.tea.teatool.flow.FlowActivity;
 import com.tea.teatool.keyboard.KeyBoardActivity;
+import com.tea.teatool.teatextview.TeaTextViewActivity;
 import com.tea.teatool.webshop.WebShopActivity;
 
 import java.util.ArrayList;
@@ -128,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add("自定义流式布局");
         mDatas.add("webshop");
         mDatas.add("手动实现TextView");
+        mDatas.add("自定义圆弧加载");
     }
 
     @Override
@@ -144,6 +146,9 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
                 break;
             case 3:
                 startActivity(new Intent(this, TeaTextViewActivity.class));
+                break;
+            case 4:
+                startActivity(new Intent(this, ArcSpeedActivity.class));
                 break;
         }
     }
