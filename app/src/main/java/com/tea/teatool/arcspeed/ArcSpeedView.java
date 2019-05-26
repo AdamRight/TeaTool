@@ -51,20 +51,9 @@ public class ArcSpeedView extends View {
         array.recycle();
 
         bottomPaint = new Paint();
-//        initPaint(bottomPaint, bottomColor);
-        bottomPaint.setAntiAlias(true);
-        bottomPaint.setColor(bottomColor);
-        bottomPaint.setStrokeWidth(borderWidth);
-        bottomPaint.setStrokeCap(Paint.Cap.ROUND);
-        bottomPaint.setStyle(Paint.Style.STROKE);
-
+        initPaint(bottomPaint, bottomColor);
         topPaint = new Paint();
-//        initPaint(topPaint, topColor);
-        topPaint.setAntiAlias(true);
-        topPaint.setColor(topColor);
-        topPaint.setStrokeWidth(borderWidth);
-        topPaint.setStrokeCap(Paint.Cap.ROUND);
-        topPaint.setStyle(Paint.Style.STROKE);
+        initPaint(topPaint, topColor);
 
         textPaint = new Paint();
         textPaint.setAntiAlias(true);
