@@ -20,6 +20,7 @@ import com.tea.teatool.arcspeed.ArcSpeedActivity;
 import com.tea.teatool.cliptext.ClipTextActivity;
 import com.tea.teatool.flow.FlowActivity;
 import com.tea.teatool.keyboard.KeyBoardActivity;
+import com.tea.teatool.tearatingbar.TeaRatingBarActivity;
 import com.tea.teatool.teatextview.TeaTextViewActivity;
 import com.tea.teatool.webshop.WebShopActivity;
 
@@ -132,6 +133,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add("手动实现TextView");
         mDatas.add("自定义圆弧加载");
         mDatas.add("自定义文字变色");
+        mDatas.add("自定义星星评分");
     }
 
     @Override
@@ -154,6 +156,9 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
                 break;
             case 5:
                 startActivity(new Intent(this, ClipTextActivity.class));
+                break;
+            case 6:
+                startActivity(new Intent(this, TeaRatingBarActivity.class));
                 break;
         }
     }

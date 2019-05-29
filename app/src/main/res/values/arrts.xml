@@ -20,4 +20,10 @@
         <attr name="changeColor" format="color"/>
     </declare-styleable>
 
+    <declare-styleable name="TeaRatingBar">
+        <attr name="starNormal" format="reference"/>
+        <attr name="starSelected" format="reference"/>
+        <attr name="starNum" format="integer"/>
+    </declare-styleable>
+
 </resources>

@@ -23,7 +23,8 @@
         <activity android:name=".webshop.WebShopActivity" />
         <activity android:name=".teatextview.TeaTextViewActivity" />
         <activity android:name=".arcspeed.ArcSpeedActivity" />
-        <activity android:name=".cliptext.ClipTextActivity"></activity>
+        <activity android:name=".cliptext.ClipTextActivity" />
+        <activity android:name=".tearatingbar.TeaRatingBarActivity"></activity>
     </application>
 
 </manifest>
