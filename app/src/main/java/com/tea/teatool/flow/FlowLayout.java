@@ -1,8 +1,12 @@
 package com.tea.teatool.flow;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Admin on 2018/12/2.
@@ -10,69 +14,109 @@ import android.view.ViewGroup;
 
 public class FlowLayout extends ViewGroup {
 
-    private Line mLine;
-
-    private int usedWidth;
-
-    private int mHorizontalSpacing = 6;
-
-
+    private List<List<View>> childViews = new ArrayList<>();
+    private BaseFlowAdapter mAdapter;
 
     public FlowLayout(Context context) {
         super(context);
     }
 
+    public FlowLayout(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public FlowLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
-        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
-        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-        int width = widthSize - getPaddingLeft() - getPaddingRight();
-        int height = heightSize -getPaddingTop() - getPaddingBottom();
+        childViews.clear();
+        int width = MeasureSpec.getSize(widthMeasureSpec);
+        int height = getPaddingTop() + getPaddingBottom();
+        int lineWidth = getPaddingLeft();
+        List<View> childView = new ArrayList<>();
+        childViews.add(childView);
+        int maxHeight = 0;
 
         int childCount = getChildCount();
         for (int i = 0; i < childCount; i++) {
-            View childView = getChildAt(i);
-            if (childView.getVisibility() == View.GONE){
+            View childV = getChildAt(i);
+            if (childV.getVisibility() == GONE) {
                 continue;
             }
-
-            int childWidthSpec = MeasureSpec.makeMeasureSpec(width,widthMode == MeasureSpec.EXACTLY ? MeasureSpec.AT_MOST : widthMode);
-            int childHeighSpec = MeasureSpec.makeMeasureSpec(height,heightMode == MeasureSpec.EXACTLY ? MeasureSpec.AT_MOST : heightMode);
-            childView.measure(childWidthSpec,childHeighSpec);
-
-            if (mLine == null){
-                mLine = new Line();
-            }
-
-            int childWidth = childView.getMeasuredWidth();
-
-            usedWidth += childWidth;
-            if (usedWidth < width){
-                mLine.addView(childView);
-                usedWidth += mHorizontalSpacing;
-                if (usedWidth >= width){
-
-                }
+            measureChild(childV, widthMeasureSpec, heightMeasureSpec);
+            MarginLayoutParams layoutParams = (MarginLayoutParams) childV.getLayoutParams();
+            if (childV.getMeasuredWidth() + layoutParams.rightMargin + layoutParams.leftMargin + lineWidth > width) {
+                //换行
+                height += maxHeight;
+                lineWidth = childV.getMeasuredWidth() + layoutParams.rightMargin + layoutParams.leftMargin;
+                childView = new ArrayList<>();
+                childViews.add(childView);
             } else {
-
-
+                lineWidth += childV.getMeasuredWidth() + layoutParams.rightMargin + layoutParams.leftMargin;
+                maxHeight = Math.max(childV.getMeasuredHeight() + layoutParams.bottomMargin + layoutParams.topMargin, maxHeight);
             }
-
+            childView.add(childV);
         }
 
+        height += maxHeight;
+        setMeasuredDimension(width, height);
     }
 
     @Override
     protected void onLayout(boolean b, int i, int i1, int i2, int i3) {
 
+        int left, top = getPaddingTop(), right, bottom;
+
+        for (List<View> childViews : childViews) {
+            left = getPaddingLeft();
+            int maxHeight = 0;
+
+            for (View childView : childViews) {
+                if (childView.getVisibility() == GONE) {
+                    continue;
+                }
+                MarginLayoutParams params = (MarginLayoutParams) childView.getLayoutParams();
+                left += params.leftMargin;
+                int childTop = top + params.topMargin;
+                right = left + childView.getMeasuredWidth();
+                bottom = childTop + childView.getMeasuredHeight();
+
+                childView.layout(left, childTop, right, bottom);
+
+                left += childView.getMeasuredWidth() + params.rightMargin;
+                int childHeight = childView.getMeasuredHeight() + params.topMargin + params.bottomMargin;
+                maxHeight = Math.max(maxHeight, childHeight);
+            }
+            top += maxHeight;
+        }
     }
 
-    public class Line {
-        private void addView(View view){
+    @Override
+    protected LayoutParams generateLayoutParams(LayoutParams p) {
+        return super.generateLayoutParams(p);
+    }
 
+    @Override
+    public LayoutParams generateLayoutParams(AttributeSet attrs) {
+        return new MarginLayoutParams(getContext(), attrs);
+    }
+
+    public void setAdapter(BaseFlowAdapter adapter) {
+        if (adapter == null) {
+            //抛异常
+            throw new RuntimeException("空指针异常");
+        }
+
+        removeAllViews();
+        this.mAdapter = adapter;
+        int childCount = mAdapter.getCount();
+        for (int i = 0; i < childCount; i++) {
+            View childView = mAdapter.getView(i, this);
+            addView(childView);
         }
     }
 }

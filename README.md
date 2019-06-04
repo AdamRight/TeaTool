@@ -4,6 +4,10 @@
 
 ![](https://adamright.github.io/img/1.gif)
 
+## 自定义流式佈局
+
+![](img/1.gif)
+
 ## 自定义圆弧加载
 
 ![](img/2.gif)
