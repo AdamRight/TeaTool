@@ -21,6 +21,7 @@ import com.tea.teatool.cliptext.ClipTextActivity;
 import com.tea.teatool.flow.FlowActivity;
 import com.tea.teatool.keyboard.KeyBoardActivity;
 import com.tea.teatool.letterindex.LetterIndexActivity;
+import com.tea.teatool.mazelock.MazeLockActivity;
 import com.tea.teatool.tearatingbar.TeaRatingBarActivity;
 import com.tea.teatool.teatextview.TeaTextViewActivity;
 import com.tea.teatool.webshop.WebShopActivity;
@@ -136,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add("自定义文字变色");
         mDatas.add("自定义星星评分");
         mDatas.add("自定义字母索引");
+        mDatas.add("自定义九宫格解锁");
     }
 
     @Override
@@ -164,6 +166,9 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
                 break;
             case 7:
                 startActivity(new Intent(this, LetterIndexActivity.class));
+                break;
+            case 8:
+                startActivity(new Intent(this, MazeLockActivity.class));
                 break;
         }
     }
