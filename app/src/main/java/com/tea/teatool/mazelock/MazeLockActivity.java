@@ -11,5 +11,7 @@ public class MazeLockActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maze_lock);
+        MazeLockView mazeLockView = findViewById(R.id.mlv);
+
     }
 }

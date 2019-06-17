@@ -3,6 +3,7 @@ package com.tea.teatool.mazelock;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -109,8 +110,10 @@ public class MazeLockView extends View {
 
             Point lastPoint = selectPoints.get(0);
 
-            for (int i = 1; i < selectPoints.size() - 1; i++) {
+            for (int i = 1; i < selectPoints.size(); i++) {
                 drawLine(lastPoint, selectPoints.get(i), canvas, mLinePaint);
+
+                drawArrow(canvas, mArrowPaint, lastPoint, selectPoints.get(i), mDotRadius / 3, 45);
 
                 lastPoint = selectPoints.get(i);
             }
@@ -121,6 +124,34 @@ public class MazeLockView extends View {
                 drawLine(lastPoint, new Point(mMovingX, mMovingY, -1), canvas, mLinePaint);
             }
         }
+    }
+
+    /**
+     * 箭头
+     */
+    private void drawArrow(Canvas canvas, Paint paint, Point start, Point end, float arrowHeight, int angle) {
+        double d = distance(start.x, start.y, end.x, end.y);
+        double sin_B = ((end.x - start.x) / d);
+        double cos_B = ((end.y - start.y) / d);
+        double tan_A = Math.tan(Math.toRadians(angle));
+        double h = (d - arrowHeight - mDotRadius * 1.1);
+        double l = arrowHeight * tan_A;
+        double a = l * sin_B;
+        double b = l * cos_B;
+        double x0 = h * sin_B;
+        double y0 = h * cos_B;
+        float x1 = (float) (start.x + (h + arrowHeight) * sin_B);
+        float y1 = (float) (start.y + (h + arrowHeight) * cos_B);
+        float x2 = (float) (start.x + x0 - b);
+        float y2 = (float) (start.y + y0 + a);
+        float x3 = (float) (start.x + x0 + b);
+        float y3 = (float) (start.y + y0 - a);
+        Path path = new Path();
+        path.moveTo(x1, y1);
+        path.lineTo(x2, y2);
+        path.lineTo(x3, y3);
+        path.close();
+        canvas.drawPath(path, paint);
     }
 
     private void drawLine(Point start, Point end, Canvas canvas, Paint paint) {
@@ -194,7 +225,7 @@ public class MazeLockView extends View {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 Point point = getPoint();
-                if (point != null) {
+                if (point != null && !selectPoints.contains(point)) {
                     isTouchPoint = true;
                     selectPoints.add(point);
 
@@ -212,6 +243,10 @@ public class MazeLockView extends View {
                 break;
             case MotionEvent.ACTION_UP:
                 isTouchPoint = false;
+                for (int i = 0; i < selectPoints.size(); i++) {
+                    selectPoints.get(i).setStatusNormal();
+                }
+                selectPoints.clear();
                 break;
 
         }
