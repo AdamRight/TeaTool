@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -45,6 +46,7 @@ public class MazeLockView extends View {
     private boolean isTouchPoint = false;
 
     private List<Point> selectPoints = new ArrayList<>();
+    private int i;
 
     public MazeLockView(Context context) {
         this(context, null);
@@ -80,6 +82,8 @@ public class MazeLockView extends View {
                     // 后绘制内圆
                     mPressedPaint.setColor(mInnerPressedColor);
                     canvas.drawCircle(mPoints[i][j].x, mPoints[i][j].y, mDotRadius / 6, mPressedPaint);
+
+                    mLinePaint.setColor(mInnerPressedColor);
                 }
 
                 if (mPoints[i][j].statusIsNormal()) {
@@ -98,20 +102,29 @@ public class MazeLockView extends View {
                     // 后绘制内圆
                     mErrorPaint.setColor(mInnerErrorColor);
                     canvas.drawCircle(mPoints[i][j].x, mPoints[i][j].y, mDotRadius / 6, mErrorPaint);
+
+                    mLinePaint.setColor(mOuterErrorColor);
                 }
             }
         }
 
-        drawLine(canvas);
+
+        drawLine(canvas, mLinePaint);
     }
 
-    private void drawLine(Canvas canvas) {
+    private void drawLine(Canvas canvas, Paint paint) {
         if (selectPoints.size() >= 1) {
 
             Point lastPoint = selectPoints.get(0);
 
             for (int i = 1; i < selectPoints.size(); i++) {
-                drawLine(lastPoint, selectPoints.get(i), canvas, mLinePaint);
+                drawLine(lastPoint, selectPoints.get(i), canvas, paint);
+
+                if (selectPoints.get(i).statusIsError()) {
+                    mArrowPaint.setColor(mOuterErrorColor);
+                } else {
+                    mArrowPaint.setColor(mInnerPressedColor);
+                }
 
                 drawArrow(canvas, mArrowPaint, lastPoint, selectPoints.get(i), mDotRadius / 3, 45);
 
@@ -121,7 +134,7 @@ public class MazeLockView extends View {
 
             boolean isInnerPoint = checkInRound(lastPoint.x, lastPoint.y, mDotRadius / 4, mMovingX, mMovingY);
             if (!isInnerPoint && isTouchPoint) {
-                drawLine(lastPoint, new Point(mMovingX, mMovingY, -1), canvas, mLinePaint);
+                drawLine(lastPoint, new Point(mMovingX, mMovingY, -1), canvas, paint);
             }
         }
     }
@@ -152,6 +165,7 @@ public class MazeLockView extends View {
         path.lineTo(x3, y3);
         path.close();
         canvas.drawPath(path, paint);
+
     }
 
     private void drawLine(Point start, Point end, Canvas canvas, Paint paint) {
@@ -242,11 +256,18 @@ public class MazeLockView extends View {
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                isTouchPoint = false;
-                for (int i = 0; i < selectPoints.size(); i++) {
-                    selectPoints.get(i).setStatusNormal();
+                if (isTouchPoint) {
+
+                    if (indexListener != null) {
+                        int[] index = new int[selectPoints.size()];
+                        for (i = 0; i < selectPoints.size(); i++) {
+                            int in = selectPoints.get(i).index;
+                            index[i] = in;
+                        }
+                        indexListener.setIndex(index);
+                    }
+
                 }
-                selectPoints.clear();
                 break;
 
         }
@@ -280,6 +301,51 @@ public class MazeLockView extends View {
 
     public static double distance(double x1, double y1, double x2, double y2) {
         return Math.sqrt(Math.abs(x1 - x2) * Math.abs(x1 - x2) + Math.abs(y1 - y2) * Math.abs(y1 - y2));
+    }
+
+    private Handler handler = new Handler();
+
+    public void setErrorOrNormal(int caseInt) {
+        switch (caseInt) {
+            case 2:
+                for (int j = 0; j < selectPoints.size(); j++) {
+                    selectPoints.get(j).setStatusError();
+                }
+
+                isTouchPoint = false;
+
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        for (int i = 0; i < selectPoints.size(); i++) {
+                            selectPoints.get(i).setStatusNormal();
+                        }
+                        selectPoints.clear();
+                        invalidate();
+                    }
+                },2000);
+
+                break;
+            case 1:
+                isTouchPoint = false;
+                for (int i = 0; i < selectPoints.size(); i++) {
+                    selectPoints.get(i).setStatusNormal();
+                }
+                selectPoints.clear();
+                break;
+
+
+        }
+    }
+
+    private IndexListener indexListener;
+
+    public void setOnIndexListener(IndexListener indexListener) {
+        this.indexListener = indexListener;
+    }
+
+    public interface IndexListener {
+        void setIndex(int[] index);
     }
 
     class Point {
