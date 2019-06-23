@@ -26,7 +26,8 @@
         <activity android:name=".cliptext.ClipTextActivity" />
         <activity android:name=".tearatingbar.TeaRatingBarActivity" />
         <activity android:name=".letterindex.LetterIndexActivity" />
-        <activity android:name=".mazelock.MazeLockActivity"></activity>
+        <activity android:name=".mazelock.MazeLockActivity" />
+        <activity android:name=".loadingshape.ShapeLoadActivity"></activity>
     </application>
 
 </manifest>

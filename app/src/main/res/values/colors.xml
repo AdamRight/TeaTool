@@ -8,4 +8,8 @@
     <color name="bg_white">#ffffff</color>
     <color name="md_grey_db">#dbdbdb</color>
 
+    <color name="triangle">#aa0000FF</color>
+    <color name="circle">#aaFFFF00</color>
+    <color name="rect">#aaFF0000</color>
+
 </resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    tools:context="com.tea.teatool.loadingshape.ShapeLoadActivity">
+
+    <com.tea.teatool.loadingshape.ShapeView
+        android:id="@+id/shape_view"
+        android:layout_marginBottom="82dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp" />
+
+    <View
+        android:background="@drawable/loading_view_shadow_bg"
+        android:id="@+id/shadow_view"
+        android:layout_width="25dp"
+        android:layout_height="2dp"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:text="玩命加载中..."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
