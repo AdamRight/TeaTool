@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by Admin on 2019/6/4.
+ * Created by jiangtea on 2019/6/4.
  */
 
 public abstract class BaseFlowAdapter {

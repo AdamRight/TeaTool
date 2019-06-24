@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import com.tea.teatool.R;
 
 /**
- * Created by Admin on 2019/5/26.
+ * Created by jiangtea on 2019/5/26.
  */
 
 public class ClipTextView extends AppCompatTextView {

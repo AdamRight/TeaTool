@@ -12,7 +12,7 @@ import android.view.View;
 import com.tea.teatool.R;
 
 /**
- * Created by Admin on 2019/6/23.
+ * Created by jiangtea on 2019/6/23.
  */
 
 public class ShapeView extends View {
