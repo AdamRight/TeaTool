@@ -47,7 +47,7 @@ public class LoadingView extends LinearLayout {
     }
 
     private void initView() {
-        // this 代表把 ui_loading_view 加载到 LoadingView 中
+        // this 代表把 loading_view 加载到 LoadingView 中
         inflate(getContext(), R.layout.loading_view, this);
 //         View loadView = inflate(getContext(),R.layout.loading_view,null);
         // 1.2 添加到该View
