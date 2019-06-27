@@ -27,7 +27,8 @@
         <activity android:name=".tearatingbar.TeaRatingBarActivity" />
         <activity android:name=".letterindex.LetterIndexActivity" />
         <activity android:name=".mazelock.MazeLockActivity" />
-        <activity android:name=".loadingshape.ShapeLoadActivity"></activity>
+        <activity android:name=".loadingshape.ShapeLoadActivity" />
+        <activity android:name=".teahandler.TeaHandlerActivity"></activity>
     </application>
 
 </manifest>
