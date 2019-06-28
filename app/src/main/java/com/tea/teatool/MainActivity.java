@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.choose1:
-                        Toast.makeText(MainActivity.this,"choose1", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "choose1", Toast.LENGTH_SHORT).show();
                         break;
                 }
                 return false;
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         fabDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"click", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "click", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
                 .OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Toast.makeText(MainActivity.this,"MenuItemClick", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "MenuItemClick", Toast.LENGTH_SHORT).show();
                 switch (item.getItemId()) {
                     case R.id.group_item_github:
                         break;
@@ -106,12 +106,12 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
             }
         });
 
-        ImageView mivMenu =  nvMenu.getHeaderView(0).findViewById(R.id.miv_menu);
+        ImageView mivMenu = nvMenu.getHeaderView(0).findViewById(R.id.miv_menu);
         mivMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mainDl.closeDrawer(GravityCompat.START);
-                Toast.makeText(MainActivity.this,"head", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "head", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -129,57 +129,24 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         recyclerView.setAdapter(adapter);
     }
 
-    private ArrayList<String> mDatas =new ArrayList<>();
-    private void generateDatas(){
-        mDatas.add("自定义键盘");
-        mDatas.add("自定义流式布局");
-        mDatas.add("webshop");
-        mDatas.add("手动实现TextView");
-        mDatas.add("自定义圆弧加载");
-        mDatas.add("自定义文字变色");
-        mDatas.add("自定义星星评分");
-        mDatas.add("自定义字母索引");
-        mDatas.add("自定义九宫格解锁");
-        mDatas.add("自定义图形变化加载");
-        mDatas.add("手写Handler");
+    private ArrayList<MainListBean> mDatas = new ArrayList<>();
+
+    private void generateDatas() {
+        mDatas.add(new MainListBean("自定义键盘", KeyBoardActivity.class));
+        mDatas.add(new MainListBean("自定义流式布局", FlowActivity.class));
+        mDatas.add(new MainListBean("webshop", WebShopActivity.class));
+        mDatas.add(new MainListBean("手动实现TextView", TeaTextViewActivity.class));
+        mDatas.add(new MainListBean("自定义圆弧加载", ArcSpeedActivity.class));
+        mDatas.add(new MainListBean("自定义文字变色", ClipTextActivity.class));
+        mDatas.add(new MainListBean("自定义星星评分", TeaRatingBarActivity.class));
+        mDatas.add(new MainListBean("自定义字母索引", LetterIndexActivity.class));
+        mDatas.add(new MainListBean("自定义九宫格解锁", MazeLockActivity.class));
+        mDatas.add(new MainListBean("自定义图形变化加载", ShapeLoadActivity.class));
+        mDatas.add(new MainListBean("手写Handler", TeaHandlerActivity.class));
     }
 
     @Override
     public void onItemClick(int position) {
-        switch (position){
-            case 0:
-                startActivity(new Intent(this, KeyBoardActivity.class));
-                break;
-            case 1:
-                startActivity(new Intent(this, FlowActivity.class));
-                break;
-            case 2:
-                startActivity(new Intent(this, WebShopActivity.class));
-                break;
-            case 3:
-                startActivity(new Intent(this, TeaTextViewActivity.class));
-                break;
-            case 4:
-                startActivity(new Intent(this, ArcSpeedActivity.class));
-                break;
-            case 5:
-                startActivity(new Intent(this, ClipTextActivity.class));
-                break;
-            case 6:
-                startActivity(new Intent(this, TeaRatingBarActivity.class));
-                break;
-            case 7:
-                startActivity(new Intent(this, LetterIndexActivity.class));
-                break;
-            case 8:
-                startActivity(new Intent(this, MazeLockActivity.class));
-                break;
-            case 9:
-                startActivity(new Intent(this, ShapeLoadActivity.class));
-                break;
-            case 10:
-                startActivity(new Intent(this, TeaHandlerActivity.class));
-                break;
-        }
+        startActivity(new Intent(this, mDatas.get(position).getActvity()));
     }
 }

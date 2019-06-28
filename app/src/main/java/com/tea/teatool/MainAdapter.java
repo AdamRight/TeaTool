@@ -16,10 +16,10 @@ import java.util.ArrayList;
 public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
 
     private Context mContext;
-    private ArrayList<String> mDatas;
+    private ArrayList<MainListBean> mDatas;
     private OnItemClickListener mItemClickListener;
 
-    public MainAdapter(Context context, ArrayList<String> datas) {
+    public MainAdapter(Context context, ArrayList<MainListBean> datas) {
         mContext = context;
         mDatas = datas;
     }
@@ -39,7 +39,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         NormalHolder normalHolder = (NormalHolder) holder;
-        normalHolder.mTV.setText(mDatas.get(position));
+        normalHolder.mTV.setText(mDatas.get(position).getItemName());
         normalHolder.itemView.setTag(position);
     }
 
@@ -69,13 +69,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         public NormalHolder(View itemView) {
             super(itemView);
 
-            mTV = (TextView) itemView.findViewById(R.id.item_tv);
-//            mTV.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//
-//                }
-//            });v
+            mTV = itemView.findViewById(R.id.item_tv);
 
         }
     }
