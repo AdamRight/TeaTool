@@ -1,4 +1,4 @@
-package com.tea.teatool;
+package com.tea.teatool.main;
 
 import java.io.Serializable;
 

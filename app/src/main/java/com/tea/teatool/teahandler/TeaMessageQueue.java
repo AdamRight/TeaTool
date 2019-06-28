@@ -1,8 +1,5 @@
 package com.tea.teatool.teahandler;
 
-import android.os.SystemClock;
-import android.util.Log;
-
 /**
  * Created by jiangtea on 2019/6/27.
  */
@@ -36,11 +33,10 @@ class TeaMessageQueue {
     }
 
     public TeaMessage next() {
-        int pendingIdleHandlerCount = 1;
+        int pendingIdleHandlerCount = -1;
         for (; ; ) {
             synchronized (this) {
-                Log.d("tea","tea:" +"next");
-                final long now = SystemClock.uptimeMillis();
+                final long now = System.currentTimeMillis();;
                 TeaMessage prevMsg = null;
                 TeaMessage msg = mMessages;
                 if (msg != null && msg.target == null) {

@@ -25,7 +25,7 @@ public class TeaHandler {
         if (delayMillis < 0) {
             delayMillis = 0;
         }
-        return sendMessageAtTime(msg, delayMillis);
+        return sendMessageAtTime(msg, System.currentTimeMillis() + delayMillis);
     }
 
     public boolean sendMessageAtTime(TeaMessage msg, long uptimeMillis) {
