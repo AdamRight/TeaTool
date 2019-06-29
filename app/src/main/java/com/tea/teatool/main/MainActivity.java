@@ -24,6 +24,7 @@ import com.tea.teatool.keyboard.KeyBoardActivity;
 import com.tea.teatool.letterindex.LetterIndexActivity;
 import com.tea.teatool.loadingshape.ShapeLoadActivity;
 import com.tea.teatool.mazelock.MazeLockActivity;
+import com.tea.teatool.teabutterknife.ButterknifeActivity;
 import com.tea.teatool.tearatingbar.TeaRatingBarActivity;
 import com.tea.teatool.teatextview.TeaTextViewActivity;
 import com.tea.teatool.webshop.WebShopActivity;
@@ -142,6 +143,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add(new MainListBean("自定义字母索引", LetterIndexActivity.class));
         mDatas.add(new MainListBean("自定义九宫格解锁", MazeLockActivity.class));
         mDatas.add(new MainListBean("自定义图形变化加载", ShapeLoadActivity.class));
+        mDatas.add(new MainListBean("手写实现Butterknife", ButterknifeActivity.class));
 
     }
 

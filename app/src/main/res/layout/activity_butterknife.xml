@@ -3,10 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <WebView
-        android:id="@+id/wv"
+    android:layout_height="match_parent"
+    tools:context="com.tea.teatool.teabutterknife.ButterknifeActivity">
+
+    <TextView
+        android:id="@+id/tv"
+        android:textSize="30dp"
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></WebView>
+        android:layout_height="100dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -7,8 +7,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="#FFFFFF"
-    tools:context="com.tea.teatool.loadingshape.ShapeLoadActivity">
+    android:background="#FFFFFF">
 
     <com.tea.teatool.loadingshape.ShapeView
         android:id="@+id/shape_view"
