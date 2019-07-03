@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -34,6 +35,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements MainAdapter.OnItemClickListener {
 
     private DrawerLayout mainDl;
+    private SwipeRefreshLayout swipeRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +43,13 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         FloatingActionButton fabDownload = findViewById(R.id.fab_download);
         NavigationView nvMenu = findViewById(R.id.nv_menu);
+        swipeRefresh = findViewById(R.id.swipe_refresh);
         mainDl = findViewById(R.id.main_dl);
 
-        toolbar.setTitle("首页");
+        toolbar.setTitle("TeaTool");
         toolbar.setNavigationIcon(R.mipmap.ic_drawer_home);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,6 +132,14 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         adapter.setItemClickListener(this);
 
         recyclerView.setAdapter(adapter);
+
+        swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshView();
+            }
+        });
     }
 
     private ArrayList<MainListBean> mDatas = new ArrayList<>();
@@ -150,5 +162,24 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
     @Override
     public void onItemClick(int position) {
         startActivity(new Intent(this, mDatas.get(position).getActvity()));
+    }
+
+    private void refreshView() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefresh.setRefreshing(false);
+                    }
+                });
+            }
+        }).start();
     }
 }
