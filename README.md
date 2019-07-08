@@ -6,6 +6,8 @@
 
 ## [手写实现ButterKnife](app/src/main/java/com/tea/teatool/teabutterknife)
 
+## [手写实现EventBus](app/src/main/java/com/tea/teatool/teaeventbus)
+
 ## [h5商城](app/src/main/java/com/tea/teatool/webshop)
 
 ## [手写TextView](app/src/main/java/com/tea/teatool/teatextview)
