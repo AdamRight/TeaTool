@@ -29,6 +29,7 @@ import com.tea.teatool.teabutterknife.ButterknifeActivity;
 import com.tea.teatool.teaeventbus.TeaEventBusActivity;
 import com.tea.teatool.tearatingbar.TeaRatingBarActivity;
 import com.tea.teatool.teatextview.TeaTextViewActivity;
+import com.tea.teatool.verticaldrag.VerticalDragActivity;
 import com.tea.teatool.webshop.WebShopActivity;
 
 import java.util.ArrayList;
@@ -158,6 +159,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add(new MainListBean("自定义图形变化加载", ShapeLoadActivity.class));
         mDatas.add(new MainListBean("手写实现Butterknife", ButterknifeActivity.class));
         mDatas.add(new MainListBean("手写实现EventBus", TeaEventBusActivity.class));
+        mDatas.add(new MainListBean("自定义列表的下拉抽屉", VerticalDragActivity.class));
 
     }
 

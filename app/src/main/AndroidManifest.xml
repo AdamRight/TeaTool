@@ -50,10 +50,16 @@
         <activity
             android:name=".loadingshape.ShapeLoadActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".teaeventbus.TeaEventBusActivity"
+        <activity
+            android:name=".teaeventbus.TeaEventBusActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".teabutterknife.ButterknifeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".verticaldrag.VerticalDragActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".teabutterknife.ButterknifeActivity"
-            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>
