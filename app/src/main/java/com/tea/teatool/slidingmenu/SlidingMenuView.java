@@ -104,4 +104,5 @@ public class SlidingMenuView extends HorizontalScrollView {
 
         ViewCompat.setTranslationX(menuView, 0.4f*l);
     }
+
 }
