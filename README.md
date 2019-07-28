@@ -47,3 +47,7 @@
 ## [自定义列表的下拉抽屉](app/src/main/java/com/tea/teatool/verticaldrag)
 
 ![](img/8.gif)
+
+## [自定义侧滑菜单](app/src/main/java/com/tea/teatool/slidingmenu)
+
+![](img/9.gif)
