@@ -26,6 +26,7 @@ import com.tea.teatool.letterindex.LetterIndexActivity;
 import com.tea.teatool.loadingshape.ShapeLoadActivity;
 import com.tea.teatool.mazelock.MazeLockActivity;
 import com.tea.teatool.slidingmenu.SlidingMenuActivity;
+import com.tea.teatool.tabmenu.TabMenuActivity;
 import com.tea.teatool.teabutterknife.ButterknifeActivity;
 import com.tea.teatool.teaeventbus.TeaEventBusActivity;
 import com.tea.teatool.tearatingbar.TeaRatingBarActivity;
@@ -162,6 +163,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add(new MainListBean("手写实现EventBus", TeaEventBusActivity.class));
         mDatas.add(new MainListBean("自定义列表的下拉抽屉", VerticalDragActivity.class));
         mDatas.add(new MainListBean("自定义侧滑菜单", SlidingMenuActivity.class));
+        mDatas.add(new MainListBean("自定义tab菜单筛选", TabMenuActivity.class));
 
     }
 

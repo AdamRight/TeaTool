@@ -62,6 +62,9 @@
         <activity
             android:name=".slidingmenu.SlidingMenuActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".tabmenu.TabMenuActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 
