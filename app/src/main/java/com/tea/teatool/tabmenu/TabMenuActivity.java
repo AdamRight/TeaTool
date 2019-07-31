@@ -11,5 +11,8 @@ public class TabMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab_menu);
+
+        TabMenuView tabMenuView = findViewById(R.id.tab_menu_view);
+        tabMenuView.setAdapter(new TabMenuAdapter(this));
     }
 }
