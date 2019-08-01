@@ -85,7 +85,16 @@ public class TabMenuView extends LinearLayout implements View.OnClickListener {
     }
 
     public void setAdapter(BaseMenuAdapter adapter) {
+
+        if (menuAdapter != null && menuObserver != null){
+            menuAdapter.unregisterObserver(menuObserver);
+        }
+
         this.menuAdapter = adapter;
+
+        menuObserver = new AdapterMenuObserver();
+        menuAdapter.registerObserver(menuObserver);
+
         for (int i = 0; i < menuAdapter.getCount(); i++) {
             View tab = menuAdapter.getTabView(i, tabView);
             tabView.addView(tab);
@@ -99,6 +108,15 @@ public class TabMenuView extends LinearLayout implements View.OnClickListener {
             View menu = menuAdapter.getMenuView(i, menuView);
             menu.setVisibility(GONE);
             menuView.addView(menu);
+        }
+    }
+
+    private AdapterMenuObserver menuObserver;
+
+    private class AdapterMenuObserver extends MenuObserver{
+        @Override
+        public void closeMenu() {
+            TabMenuView.this.closeMenu();
         }
     }
 

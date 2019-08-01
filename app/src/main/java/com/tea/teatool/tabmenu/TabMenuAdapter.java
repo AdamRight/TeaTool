@@ -38,10 +38,16 @@ public class TabMenuAdapter extends BaseMenuAdapter {
 
     @Override
     public View getMenuView(int position, ViewGroup parent) {
-        TextView tabView = (TextView) LayoutInflater.from(context).inflate(R.layout.menu_content_item, parent, false);
-        tabView.setText(items[position]);
-        tabView.setTextColor(Color.BLACK);
-        return tabView;
+        TextView menuView = (TextView) LayoutInflater.from(context).inflate(R.layout.menu_content_item, parent, false);
+        menuView.setText(items[position]);
+        menuView.setTextColor(Color.BLACK);
+        menuView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closeMenu();
+            }
+        });
+        return menuView;
     }
 
     @Override
