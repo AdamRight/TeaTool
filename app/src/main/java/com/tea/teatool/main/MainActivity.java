@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.tea.teatool.R;
 import com.tea.teatool.arcspeed.ArcSpeedActivity;
+import com.tea.teatool.circleload.CircleLoadingActivity;
 import com.tea.teatool.cliptext.ClipTextActivity;
 import com.tea.teatool.flow.FlowActivity;
 import com.tea.teatool.keyboard.KeyBoardActivity;
@@ -164,6 +165,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add(new MainListBean("自定义列表的下拉抽屉", VerticalDragActivity.class));
         mDatas.add(new MainListBean("自定义侧滑菜单", SlidingMenuActivity.class));
         mDatas.add(new MainListBean("自定义tab菜单筛选", TabMenuActivity.class));
+        mDatas.add(new MainListBean("自定义三圆点加载", CircleLoadingActivity.class));
 
     }
 

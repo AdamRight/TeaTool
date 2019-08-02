@@ -65,6 +65,9 @@
         <activity
             android:name=".tabmenu.TabMenuActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".circleload.CircleLoadingActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 

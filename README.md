@@ -55,3 +55,7 @@
 ## [自定义tab菜单筛选](app/src/main/java/com/tea/teatool/tabmenu)
 
 ![](img/10.gif)
+
+## [自定义三圆点加载](app/src/main/java/com/tea/teatool/circleload)
+
+![](img/11.gif)
