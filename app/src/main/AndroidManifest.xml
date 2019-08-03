@@ -67,6 +67,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".circleload.CircleLoadingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".teahttp.TeaHttpActivity"
             android:screenOrientation="portrait"/>
 
     </application>
