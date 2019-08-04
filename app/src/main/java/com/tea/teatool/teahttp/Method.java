@@ -4,5 +4,20 @@ package com.tea.teatool.teahttp;
  * Created by jiangtea on 2019/8/3.
  */
 public enum  Method {
-    POST,GET,HEAD,DELETE,PUT,PATCH
+
+    POST("POST"),GET("GET");
+
+    String name;
+
+    Method(String name){
+        this.name = name;
+    }
+
+    public boolean doOutput() {
+        switch (this){
+            case POST:
+                return true;
+        }
+        return false;
+    }
 }
