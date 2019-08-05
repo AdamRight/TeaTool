@@ -1,11 +1,14 @@
 package com.tea.teatool.teahttp;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import com.tea.teatool.teahttp.interceptor.BridgeInterceptor;
+import com.tea.teatool.teahttp.interceptor.CacheInterceptor;
+import com.tea.teatool.teahttp.interceptor.CallServerInterceptor;
+import com.tea.teatool.teahttp.interceptor.Interceptor;
+import com.tea.teatool.teahttp.interceptor.RealInterceptorChain;
 
-import javax.net.ssl.HttpsURLConnection;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jiangtea on 2019/8/3.
@@ -48,7 +51,7 @@ public class RealCall implements Call {
         protected void execute() {
 
             final TeaRequest request = originalRequest;
-            try {
+            /*try {
                 URL url = new URL(request.url);
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
@@ -85,6 +88,18 @@ public class RealCall implements Call {
 
             } catch (IOException e) {
                 callback.onFailure(RealCall.this, e);
+            }*/
+
+            try {
+                List<Interceptor> interceptors = new ArrayList<>();
+                interceptors.add(new BridgeInterceptor());
+                interceptors.add(new CacheInterceptor());
+                interceptors.add(new CallServerInterceptor());
+                Interceptor.Chain chain = new RealInterceptorChain(interceptors,0,originalRequest);
+                TeaResponse response = chain.proceed(request);
+                callback.onResponse(RealCall.this,response);
+            } catch (IOException e) {
+                callback.onFailure(RealCall.this,e);
             }
         }
     }

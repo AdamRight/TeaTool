@@ -18,15 +18,23 @@ import java.util.Map;
 public class TeaRequest {
 
     final String url;
-    final Method method;
+    public final Method method;
     final Map<String, String> headerMap;
-    final TeaRequestBody requestBody;
+    TeaRequestBody requestBody;
 
     public TeaRequest(Builder builder) {
         this.url = builder.url;
         this.method = builder.method;
         this.headerMap = builder.headerMap;
         this.requestBody = builder.requestBody;
+    }
+
+    public TeaRequestBody requestBody() {
+        return requestBody;
+    }
+
+    public String url(){
+        return url;
     }
 
     public static Bindry create(final File file) {
@@ -62,6 +70,10 @@ public class TeaRequest {
                 inputStream.close();
             }
         };
+    }
+
+    public void header(String key, String value) {
+        headerMap.put(key, value);
     }
 
     public static class Builder {
