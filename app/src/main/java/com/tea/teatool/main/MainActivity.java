@@ -21,6 +21,7 @@ import com.tea.teatool.R;
 import com.tea.teatool.arcspeed.ArcSpeedActivity;
 import com.tea.teatool.circleload.CircleLoadingActivity;
 import com.tea.teatool.cliptext.ClipTextActivity;
+import com.tea.teatool.dragmsg.DragMsgActivity;
 import com.tea.teatool.flow.FlowActivity;
 import com.tea.teatool.keyboard.KeyBoardActivity;
 import com.tea.teatool.letterindex.LetterIndexActivity;
@@ -168,6 +169,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add(new MainListBean("自定义tab菜单筛选", TabMenuActivity.class));
         mDatas.add(new MainListBean("自定义三圆点加载", CircleLoadingActivity.class));
         mDatas.add(new MainListBean("造轮子OkHttp", TeaHttpActivity.class));
+        mDatas.add(new MainListBean("自定义消息拖拽", DragMsgActivity.class));
 
     }
 

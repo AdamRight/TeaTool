@@ -70,7 +70,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".teahttp.TeaHttpActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity android:name=".dragmsg.DragMsgActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 
