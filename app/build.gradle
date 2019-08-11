@@ -36,4 +36,6 @@ dependencies {
     implementation project(':teabutterknife-annotations')
     implementation project(':teabutterknife')
     annotationProcessor project(':teabutterknife-compiler')
+    //okhttp3
+    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
 }

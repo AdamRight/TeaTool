@@ -32,6 +32,7 @@ import com.tea.teatool.tabmenu.TabMenuActivity;
 import com.tea.teatool.teabutterknife.ButterknifeActivity;
 import com.tea.teatool.teaeventbus.TeaEventBusActivity;
 import com.tea.teatool.teahttp.TeaHttpActivity;
+import com.tea.teatool.teahttp.TeaOkUpFileActivity;
 import com.tea.teatool.tearatingbar.TeaRatingBarActivity;
 import com.tea.teatool.teatextview.TeaTextViewActivity;
 import com.tea.teatool.verticaldrag.VerticalDragActivity;
@@ -169,6 +170,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add(new MainListBean("自定义tab菜单筛选", TabMenuActivity.class));
         mDatas.add(new MainListBean("自定义三圆点加载", CircleLoadingActivity.class));
         mDatas.add(new MainListBean("造轮子OkHttp", TeaHttpActivity.class));
+        mDatas.add(new MainListBean("OkHttp上传文件", TeaOkUpFileActivity.class));
         mDatas.add(new MainListBean("自定义消息拖拽", DragMsgActivity.class));
 
     }

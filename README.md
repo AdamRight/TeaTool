@@ -8,6 +8,12 @@
 
 ## [手写实现EventBus](app/src/main/java/com/tea/teatool/teaeventbus)
 
+## OkHttp相关
+
+[防OkHttp造轮子](app/src/main/java/com/tea/teahttp/TeaHttpActivity)
+
+[OkHttp文件上传](app/src/main/java/com/tea/teahttp/TeaOkUpFileActivity)
+
 ## [h5商城](app/src/main/java/com/tea/teatool/webshop)
 
 ## [手写TextView](app/src/main/java/com/tea/teatool/teatextview)
