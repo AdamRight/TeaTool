@@ -74,8 +74,13 @@
         <activity
             android:name=".dragmsg.DragMsgActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".teahttp.TeaOkUpFileActivity"
+        <activity
+            android:name=".teahttp.TeaOkUpFileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".thumbup.ThumbUpActivity"
             android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>
