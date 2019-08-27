@@ -35,6 +35,7 @@ import com.tea.teatool.teahttp.TeaHttpActivity;
 import com.tea.teatool.teahttp.TeaOkUpFileActivity;
 import com.tea.teatool.tearatingbar.TeaRatingBarActivity;
 import com.tea.teatool.teatextview.TeaTextViewActivity;
+import com.tea.teatool.thumbup.ThumbUpActivity;
 import com.tea.teatool.verticaldrag.VerticalDragActivity;
 import com.tea.teatool.webshop.WebShopActivity;
 
@@ -172,6 +173,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add(new MainListBean("造轮子OkHttp", TeaHttpActivity.class));
         mDatas.add(new MainListBean("OkHttp上传文件", TeaOkUpFileActivity.class));
         mDatas.add(new MainListBean("自定义消息拖拽", DragMsgActivity.class));
+        mDatas.add(new MainListBean("自定义小心心点赞效果", ThumbUpActivity.class));
 
     }
 
