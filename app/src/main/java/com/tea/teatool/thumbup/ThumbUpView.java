@@ -4,7 +4,9 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
+import android.graphics.PointF;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
@@ -63,7 +65,7 @@ public class ThumbUpView extends RelativeLayout {
         height = MeasureSpec.getSize(heightMeasureSpec);
     }
 
-    public void AddThumbUp() {
+    public void addThumbUp() {
         final ImageView imageView = new ImageView(getContext());
         imageView.setImageResource(imgRes[random.nextInt(imgRes.length - 1)]);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -89,17 +91,39 @@ public class ThumbUpView extends RelativeLayout {
         ObjectAnimator alphaAnimator = ObjectAnimator.ofFloat(imageView, "alpha", 0.3f, 1.0f);
         ObjectAnimator scaleXAnimator = ObjectAnimator.ofFloat(imageView, "scaleX", 0.3f, 1.0f);
         ObjectAnimator scaleYAnimator = ObjectAnimator.ofFloat(imageView, "scaleY", 0.3f, 1.0f);
-        readyAnimator.playTogether(alphaAnimator,scaleXAnimator,scaleYAnimator);
-        readyAnimator.setDuration(1000);
-        
-        animatorSet.playSequentially(readyAnimator,getBezierAnimator(imageView));
+        readyAnimator.playTogether(alphaAnimator, scaleXAnimator, scaleYAnimator);
+        readyAnimator.setDuration(500);
 
+        animatorSet.playSequentially(readyAnimator, getBezierAnimator(imageView));
         return animatorSet;
     }
 
-    private Animator getBezierAnimator(ImageView imageView) {
+    private Animator getBezierAnimator(final ImageView imageView) {
 
-        return null;
+        PointF point0 = new PointF(width / 2 - imgWidth / 2, height - imgHeight);
+        PointF point1 = getPoint(1);
+        PointF point2 = getPoint(2);
+        PointF point3 = new PointF(random.nextInt(width) - imgWidth, 0);
+
+        ThumbUpEvaluator thumbUpEvaluator = new ThumbUpEvaluator(point1, point2);
+        ValueAnimator bezierAnimator = ObjectAnimator.ofObject(thumbUpEvaluator, point0, point3);
+        bezierAnimator.setInterpolator(interpolators[random.nextInt(interpolators.length - 1)]);
+        bezierAnimator.setDuration(5000);
+        bezierAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                PointF pointF = (PointF) animation.getAnimatedValue();
+                imageView.setX(pointF.x);
+                imageView.setY(pointF.y);
+                float animatedFraction = animation.getAnimatedFraction();
+                imageView.setAlpha(1 - animatedFraction + 0.2f);
+            }
+        });
+        return bezierAnimator;
+    }
+
+    private PointF getPoint(int index) {
+        return new PointF(random.nextInt(width) - imgWidth, random.nextInt(height / 2) + (index - 1) * (height / 2));
     }
 
 

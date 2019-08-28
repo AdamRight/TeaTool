@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add(new MainListBean("造轮子OkHttp", TeaHttpActivity.class));
         mDatas.add(new MainListBean("OkHttp上传文件", TeaOkUpFileActivity.class));
         mDatas.add(new MainListBean("自定义消息拖拽", DragMsgActivity.class));
-        mDatas.add(new MainListBean("自定义小心心点赞效果", ThumbUpActivity.class));
+        mDatas.add(new MainListBean("自定义心心点赞", ThumbUpActivity.class));
 
     }
 
