@@ -27,6 +27,7 @@ import com.tea.teatool.keyboard.KeyBoardActivity;
 import com.tea.teatool.letterindex.LetterIndexActivity;
 import com.tea.teatool.loadingshape.ShapeLoadActivity;
 import com.tea.teatool.mazelock.MazeLockActivity;
+import com.tea.teatool.parallax.ParallaxActivity;
 import com.tea.teatool.slidingmenu.SlidingMenuActivity;
 import com.tea.teatool.tabmenu.TabMenuActivity;
 import com.tea.teatool.teabutterknife.ButterknifeActivity;
@@ -174,6 +175,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add(new MainListBean("OkHttp上传文件", TeaOkUpFileActivity.class));
         mDatas.add(new MainListBean("自定义消息拖拽", DragMsgActivity.class));
         mDatas.add(new MainListBean("自定义心心点赞", ThumbUpActivity.class));
+        mDatas.add(new MainListBean("自定义引导页视差动画", ParallaxActivity.class));
 
     }
 
