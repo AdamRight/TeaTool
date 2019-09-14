@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.tea.teatool.parallax.ParallaxViewPage xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".parallax.ParallaxActivity">
+    android:background="@color/bg_orange_ff7e2a"
+    android:id="@+id/parallax_page">
 
-</android.support.constraint.ConstraintLayout>
+</com.tea.teatool.parallax.ParallaxViewPage>

@@ -30,4 +30,9 @@
         <attr name="menuRightMargin" format="dimension"/>
     </declare-styleable>
 
+    <attr name="translationXIn" format="float"/>
+    <attr name="translationXOut" format="float"/>
+    <attr name="translationYIn" format="float"/>
+    <attr name="translationYOut" format="float"/>
+
 </resources>
