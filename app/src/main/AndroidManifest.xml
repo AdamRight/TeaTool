@@ -82,6 +82,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".parallax.ParallaxActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".spanclick.SpannableClickActivity"
             android:screenOrientation="portrait"/>
 
     </application>

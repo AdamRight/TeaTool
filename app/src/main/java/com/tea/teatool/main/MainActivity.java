@@ -29,6 +29,7 @@ import com.tea.teatool.loadingshape.ShapeLoadActivity;
 import com.tea.teatool.mazelock.MazeLockActivity;
 import com.tea.teatool.parallax.ParallaxActivity;
 import com.tea.teatool.slidingmenu.SlidingMenuActivity;
+import com.tea.teatool.spanclick.SpannableClickActivity;
 import com.tea.teatool.tabmenu.TabMenuActivity;
 import com.tea.teatool.teabutterknife.ButterknifeActivity;
 import com.tea.teatool.teaeventbus.TeaEventBusActivity;
@@ -176,6 +177,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add(new MainListBean("自定义消息拖拽", DragMsgActivity.class));
         mDatas.add(new MainListBean("自定义心心点赞", ThumbUpActivity.class));
         mDatas.add(new MainListBean("自定义引导页视差动画", ParallaxActivity.class));
+        mDatas.add(new MainListBean("spannable部分文字多个点击事件", SpannableClickActivity.class));
 
     }
 
