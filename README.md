@@ -77,3 +77,5 @@
 ## [spannable部分文字多个点击事件](app/src/main/java/com/tea/teatool/spanclick)
 
 ![](img/14.gif)
+
+## [js相互传参](app/src/main/java/com/tea/teatool/jsconnect)

@@ -85,7 +85,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".spanclick.SpannableClickActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jsconnect.JsConnectActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 
