@@ -10,9 +10,9 @@
 
 ## OkHttp相关
 
-[防OkHttp造轮子](app/src/main/java/com/tea/teahttp/TeaHttpActivity)
+## [防OkHttp造轮子](app/src/main/java/com/tea/teahttp/TeaHttpActivity)
 
-[OkHttp文件上传](app/src/main/java/com/tea/teahttp/TeaOkUpFileActivity)
+## [OkHttp文件上传](app/src/main/java/com/tea/teahttp/TeaOkUpFileActivity)
 
 ## [h5商城](app/src/main/java/com/tea/teatool/webshop)
 
@@ -69,3 +69,11 @@
 ## [自定义心心点赞](app/src/main/java/com/tea/teatool/thumbup)
 
 ![](img/12.gif)
+
+## [自定义引导页视差动画](app/src/main/java/com/tea/teatool/parallax)
+
+![](img/13.gif)
+
+## [spannable部分文字多个点击事件](app/src/main/java/com/tea/teatool/spanclick)
+
+![](img/14.gif)
