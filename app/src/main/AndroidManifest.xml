@@ -89,7 +89,9 @@
         <activity
             android:name=".jsconnect.JsConnectActivity"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".loadingball.BallRotateActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

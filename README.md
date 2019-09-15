@@ -79,3 +79,7 @@
 ![](img/14.gif)
 
 ## [js相互传参](app/src/main/java/com/tea/teatool/jsconnect)
+
+## [自定义小球旋转加载动画](app/src/main/java/com/tea/teatool/loadingball)
+
+![](img/15.gif)
