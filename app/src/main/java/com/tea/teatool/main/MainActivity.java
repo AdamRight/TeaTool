@@ -23,6 +23,7 @@ import com.tea.teatool.circleload.CircleLoadingActivity;
 import com.tea.teatool.cliptext.ClipTextActivity;
 import com.tea.teatool.dragmsg.DragMsgActivity;
 import com.tea.teatool.flow.FlowActivity;
+import com.tea.teatool.iocannotate.IOCAnnotateActivity;
 import com.tea.teatool.jsconnect.JsConnectActivity;
 import com.tea.teatool.keyboard.KeyBoardActivity;
 import com.tea.teatool.letterindex.LetterIndexActivity;
@@ -182,6 +183,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add(new MainListBean("spannable部分文字多个点击事件", SpannableClickActivity.class));
         mDatas.add(new MainListBean("js相互传参", JsConnectActivity.class));
         mDatas.add(new MainListBean("自定义小球旋转加载动画", BallRotateActivity.class));
+        mDatas.add(new MainListBean("手写IOC注解", IOCAnnotateActivity.class));
 
     }
 

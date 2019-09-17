@@ -14,6 +14,8 @@
 
 ## [OkHttp文件上传](app/src/main/java/com/tea/teahttp/TeaOkUpFileActivity)
 
+## [手写IOC注解](app/src/main/java/com/tea/teatool/iocannotate)
+
 ## [h5商城](app/src/main/java/com/tea/teatool/webshop)
 
 ## [手写TextView](app/src/main/java/com/tea/teatool/teatextview)

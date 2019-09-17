@@ -91,7 +91,11 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".loadingball.BallRotateActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".iocannotate.IOCAnnotateActivity"/>
+
     </application>
 
 </manifest>
