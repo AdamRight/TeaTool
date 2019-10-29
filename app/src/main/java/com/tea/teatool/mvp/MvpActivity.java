@@ -2,11 +2,13 @@ package com.tea.teatool.mvp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.tea.teatool.R;
 
-public class MvpActivity extends AppCompatActivity implements UserInfoContract.UserInfoView{
+public class MvpActivity extends AppCompatActivity implements UserInfoContract.UserInfoView, View.OnClickListener {
 
     private UserInfoContract.UserInfoPresenter presenter;
 
@@ -15,8 +17,10 @@ public class MvpActivity extends AppCompatActivity implements UserInfoContract.U
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mvp);
 
+        Button mvpBtn = findViewById(R.id.mvp_btn);
+        mvpBtn.setOnClickListener(this);
+
         presenter = new UserInfoPresenter(this);
-        presenter.getUsers("从View层传递");
 
     }
 
@@ -34,5 +38,10 @@ public class MvpActivity extends AppCompatActivity implements UserInfoContract.U
     public void onSuccess(String userInfo) {
         Toast.makeText(this,"onSuccess",Toast.LENGTH_SHORT).show();
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        presenter.getUsers("从View层传递");
     }
 }
