@@ -93,8 +93,11 @@
             android:name=".loadingball.BallRotateActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:screenOrientation="portrait"
-            android:name=".iocannotate.IOCAnnotateActivity"/>
+            android:name=".iocannotate.IOCAnnotateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.MvpActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 
