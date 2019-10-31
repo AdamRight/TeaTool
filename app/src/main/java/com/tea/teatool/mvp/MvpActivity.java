@@ -1,27 +1,33 @@
 package com.tea.teatool.mvp;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.tea.teatool.R;
+import com.tea.teatool.mvp.base.BaseMvpActivity;
 
-public class MvpActivity extends AppCompatActivity implements UserInfoContract.UserInfoView, View.OnClickListener {
-
-    private UserInfoContract.UserInfoPresenter presenter;
+public class MvpActivity extends BaseMvpActivity<UserInfoPresenter> implements UserInfoContract.UserInfoView, View.OnClickListener {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mvp);
+    protected void initData() {
 
+    }
+
+    @Override
+    protected void initView() {
         Button mvpBtn = findViewById(R.id.mvp_btn);
         mvpBtn.setOnClickListener(this);
+    }
 
-        presenter = new UserInfoPresenter(this);
+    @Override
+    protected UserInfoPresenter createPresenter() {
+        return new UserInfoPresenter();
+    }
 
+    @Override
+    protected void setContentView() {
+        setContentView(R.layout.activity_mvp);
     }
 
     @Override
@@ -42,6 +48,6 @@ public class MvpActivity extends AppCompatActivity implements UserInfoContract.U
 
     @Override
     public void onClick(View v) {
-        presenter.getUsers("从View层传递");
+        getPresenter().getUsers("从View层传递");
     }
 }
