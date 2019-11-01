@@ -29,7 +29,6 @@ public class BasePresenter<V extends BaseView> {
     public void detachView() {
         this.viewWeak.clear();
         this.viewWeak = null;
-        this.proxyView = null;
     }
 
     public V getView() {
