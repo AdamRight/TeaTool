@@ -1,6 +1,5 @@
 package com.tea.teatool.mvp.base;
 
-import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -10,24 +9,23 @@ import java.lang.reflect.Proxy;
  */
 public class BasePresenter<V extends BaseView> {
 
-    private WeakReference<V> viewWeak;
+    private V viewWeak;
     private V proxyView;
 
     public void attachView(final V view) {
-        this.viewWeak = new WeakReference<>(view);
+        this.viewWeak = view;
         proxyView = (V) Proxy.newProxyInstance(view.getClass().getClassLoader(), view.getClass().getInterfaces(), new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                if (viewWeak == null || viewWeak.get() == null) {
+                if (viewWeak == null) {
                     return null;
                 }
-                return method.invoke(viewWeak.get(), args);
+                return method.invoke(viewWeak, args);
             }
         });
     }
 
     public void detachView() {
-        this.viewWeak.clear();
         this.viewWeak = null;
     }
 
