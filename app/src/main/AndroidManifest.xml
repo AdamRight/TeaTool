@@ -97,8 +97,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".mvp.MvpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".rv.baseuse.BaseUseRVActivity"
             android:screenOrientation="portrait"/>
-
     </application>
 
 </manifest>

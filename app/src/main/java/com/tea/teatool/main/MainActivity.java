@@ -32,6 +32,7 @@ import com.tea.teatool.loadingshape.ShapeLoadActivity;
 import com.tea.teatool.mazelock.MazeLockActivity;
 import com.tea.teatool.mvp.MvpActivity;
 import com.tea.teatool.parallax.ParallaxActivity;
+import com.tea.teatool.rv.baseuse.BaseUseRVActivity;
 import com.tea.teatool.slidingmenu.SlidingMenuActivity;
 import com.tea.teatool.spanclick.SpannableClickActivity;
 import com.tea.teatool.tabmenu.TabMenuActivity;
@@ -186,6 +187,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add(new MainListBean("自定义小球旋转加载动画", BallRotateActivity.class));
         mDatas.add(new MainListBean("手写IOC注解", IOCAnnotateActivity.class));
         mDatas.add(new MainListBean("MVP小demo", MvpActivity.class));
+        mDatas.add(new MainListBean("RecyclerView基本使用", BaseUseRVActivity.class));
 
     }
 
