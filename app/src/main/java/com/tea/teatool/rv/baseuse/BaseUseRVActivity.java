@@ -23,6 +23,10 @@ public class BaseUseRVActivity extends AppCompatActivity {
         baseUseRv = findViewById(R.id.base_use_rv);
         baseUseRv.setLayoutManager(new LinearLayoutManager(this));
         baseUseRv.setAdapter(new BaseUseRecyclerAdapter(data,this));
+
+//        baseUseRv.addItemDecoration(new BaseUseDecoration());
+        baseUseRv.addItemDecoration(new BaseUseLinerlayoutDecoration(this,R.drawable.rv_item_decotation));
+
     }
 
     private void initData() {
