@@ -35,8 +35,17 @@ public class BaseUseRecyclerAdapter extends RecyclerView.Adapter<BaseUseRecycler
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.itemTv.setText(data.get(position));
+
+        if (itemClickListener != null){
+            holder.itemTv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    itemClickListener.onItemClick(position);
+                }
+            });
+        }
     }
 
     @Override
@@ -52,5 +61,15 @@ public class BaseUseRecyclerAdapter extends RecyclerView.Adapter<BaseUseRecycler
             super(itemView);
             itemTv = itemView.findViewById(R.id.item_rv_tv);
         }
+    }
+
+    private ItemClickListener itemClickListener;
+
+    public void setOnItemClickListener(ItemClickListener itemClickListener){
+        this.itemClickListener = itemClickListener;
+    }
+
+    public interface ItemClickListener{
+        public void onItemClick(int position);
     }
 }

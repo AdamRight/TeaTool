@@ -4,12 +4,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.tea.teatool.R;
 
 import java.util.ArrayList;
 
-public class BaseUseRVActivity extends AppCompatActivity {
+public class BaseUseRVActivity extends AppCompatActivity implements BaseUseRecyclerAdapter.ItemClickListener {
 
     private RecyclerView baseUseRv;
     private ArrayList<String> data;
@@ -22,11 +23,11 @@ public class BaseUseRVActivity extends AppCompatActivity {
         initData();
         baseUseRv = findViewById(R.id.base_use_rv);
         baseUseRv.setLayoutManager(new LinearLayoutManager(this));
-        baseUseRv.setAdapter(new BaseUseRecyclerAdapter(data,this));
-
+        BaseUseRecyclerAdapter baseUseRecyclerAdapter = new BaseUseRecyclerAdapter(data, this);
+        baseUseRv.setAdapter(baseUseRecyclerAdapter);
 //        baseUseRv.addItemDecoration(new BaseUseDecoration());
         baseUseRv.addItemDecoration(new BaseUseLinerlayoutDecoration(this,R.drawable.rv_item_decotation));
-
+        baseUseRecyclerAdapter.setOnItemClickListener(this);
     }
 
     private void initData() {
@@ -34,5 +35,10 @@ public class BaseUseRVActivity extends AppCompatActivity {
         for (int i = 'A'; i <= 'Z'; i++) {
             data.add("" + (char) i);
         }
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Toast.makeText(this,data.get(position),Toast.LENGTH_SHORT).show();
     }
 }
