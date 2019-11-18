@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.tea.teatool.R;
+import com.tea.teatool.rv.common.LettersAdapter;
 
 import java.util.ArrayList;
 
@@ -23,11 +24,12 @@ public class BaseUseRVActivity extends AppCompatActivity implements BaseUseRecyc
         initData();
         baseUseRv = findViewById(R.id.base_use_rv);
         baseUseRv.setLayoutManager(new LinearLayoutManager(this));
-        BaseUseRecyclerAdapter baseUseRecyclerAdapter = new BaseUseRecyclerAdapter(data, this);
-        baseUseRv.setAdapter(baseUseRecyclerAdapter);
+//        BaseUseRecyclerAdapter baseUseRecyclerAdapter = new BaseUseRecyclerAdapter(data, this);
+//        baseUseRv.setAdapter(baseUseRecyclerAdapter);
 //        baseUseRv.addItemDecoration(new BaseUseDecoration());
+        baseUseRv.setAdapter(new LettersAdapter(data, this));
         baseUseRv.addItemDecoration(new BaseUseLinerlayoutDecoration(this,R.drawable.rv_item_decotation));
-        baseUseRecyclerAdapter.setOnItemClickListener(this);
+//        baseUseRecyclerAdapter.setOnItemClickListener(this);
     }
 
     private void initData() {
