@@ -14,6 +14,7 @@ import java.util.List;
  */
 public abstract class CommonRecyclerAdapter<DATA> extends RecyclerView.Adapter<CommonViewHolder> {
 
+    private MulitiTypeSupport typeSupport;
     private int mLayoutId;
     private List<DATA> mData;
     private Context mContext;
@@ -26,11 +27,28 @@ public abstract class CommonRecyclerAdapter<DATA> extends RecyclerView.Adapter<C
         mInflater = LayoutInflater.from(mContext);
     }
 
+    public CommonRecyclerAdapter(List<DATA> mData, Context mContext, MulitiTypeSupport mulitiType) {
+        this(-1,mData,mContext);
+        this.typeSupport = mulitiType;
+    }
+
     @NonNull
     @Override
     public CommonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if (typeSupport != null){
+            mLayoutId = viewType;
+        }
         View view = mInflater.inflate(mLayoutId, parent, false);
         return new CommonViewHolder(view);
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (typeSupport != null){
+            //布局
+            return typeSupport.getLayoutId(mData.get(position));
+        }
+        return super.getItemViewType(position);
     }
 
     @Override
