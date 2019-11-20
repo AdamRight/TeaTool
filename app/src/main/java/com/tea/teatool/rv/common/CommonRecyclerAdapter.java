@@ -34,8 +34,26 @@ public abstract class CommonRecyclerAdapter<DATA> extends RecyclerView.Adapter<C
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CommonViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CommonViewHolder holder, final int position) {
         onBindData(holder, mData.get(position), position);
+
+        if (mItemClickListener != null){
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mItemClickListener.onItemClick(position);
+                }
+            });
+        }
+
+        if (mItemLongClickListener != null){
+            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    return mItemLongClickListener.onItemLongClick(position);
+                }
+            });
+        }
     }
 
     protected abstract void onBindData(CommonViewHolder holder, DATA data, int position);
@@ -43,5 +61,16 @@ public abstract class CommonRecyclerAdapter<DATA> extends RecyclerView.Adapter<C
     @Override
     public int getItemCount() {
         return mData.size();
+    }
+
+    private ItemClickListener mItemClickListener;
+    private ItemLongClickListener mItemLongClickListener;
+
+    public void setOnItemClickListener(ItemClickListener temClickListener) {
+        this.mItemClickListener = temClickListener;
+    }
+
+    public void setOnItemLongClickListener(ItemLongClickListener itemLongClickListener) {
+        this.mItemLongClickListener = itemLongClickListener;
     }
 }

@@ -7,11 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.tea.teatool.R;
+import com.tea.teatool.rv.common.ItemClickListener;
+import com.tea.teatool.rv.common.ItemLongClickListener;
 import com.tea.teatool.rv.common.LettersAdapter;
 
 import java.util.ArrayList;
 
-public class BaseUseRVActivity extends AppCompatActivity implements BaseUseRecyclerAdapter.ItemClickListener {
+public class BaseUseRVActivity extends AppCompatActivity implements BaseUseRecyclerAdapter.ItemClickListener, ItemClickListener, ItemLongClickListener {
 
     private RecyclerView baseUseRv;
     private ArrayList<String> data;
@@ -27,9 +29,12 @@ public class BaseUseRVActivity extends AppCompatActivity implements BaseUseRecyc
 //        BaseUseRecyclerAdapter baseUseRecyclerAdapter = new BaseUseRecyclerAdapter(data, this);
 //        baseUseRv.setAdapter(baseUseRecyclerAdapter);
 //        baseUseRv.addItemDecoration(new BaseUseDecoration());
-        baseUseRv.setAdapter(new LettersAdapter(data, this));
-        baseUseRv.addItemDecoration(new BaseUseLinerlayoutDecoration(this,R.drawable.rv_item_decotation));
+        LettersAdapter lettersAdapter = new LettersAdapter(data, this);
+        baseUseRv.setAdapter(lettersAdapter);
+        baseUseRv.addItemDecoration(new BaseUseLinerlayoutDecoration(this, R.drawable.rv_item_decotation));
 //        baseUseRecyclerAdapter.setOnItemClickListener(this);
+        lettersAdapter.setOnItemClickListener(this);
+        lettersAdapter.setOnItemLongClickListener(this);
     }
 
     private void initData() {
@@ -41,6 +46,12 @@ public class BaseUseRVActivity extends AppCompatActivity implements BaseUseRecyc
 
     @Override
     public void onItemClick(int position) {
-        Toast.makeText(this,data.get(position),Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, data.get(position), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean onItemLongClick(int position) {
+        Toast.makeText(this, "长按" + data.get(position), Toast.LENGTH_SHORT).show();
+        return true;
     }
 }
