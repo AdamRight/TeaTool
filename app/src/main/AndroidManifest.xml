@@ -103,7 +103,11 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".rv.type.TypeRVActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".rv.headandbottom.AddHeadRecyclerViewActivity" />
+
     </application>
 
 </manifest>

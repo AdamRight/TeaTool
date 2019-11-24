@@ -33,6 +33,7 @@ import com.tea.teatool.mazelock.MazeLockActivity;
 import com.tea.teatool.mvp.MvpActivity;
 import com.tea.teatool.parallax.ParallaxActivity;
 import com.tea.teatool.rv.baseuse.BaseUseRVActivity;
+import com.tea.teatool.rv.headandbottom.AddHeadRecyclerViewActivity;
 import com.tea.teatool.rv.type.TypeRVActivity;
 import com.tea.teatool.slidingmenu.SlidingMenuActivity;
 import com.tea.teatool.spanclick.SpannableClickActivity;
@@ -190,6 +191,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add(new MainListBean("MVP小demo", MvpActivity.class));
         mDatas.add(new MainListBean("RecyclerView基本使用", BaseUseRVActivity.class));
         mDatas.add(new MainListBean("多种类型条目RecyclerView", TypeRVActivity.class));
+        mDatas.add(new MainListBean("给RecyclerView添加头部", AddHeadRecyclerViewActivity.class));
 
     }
 
