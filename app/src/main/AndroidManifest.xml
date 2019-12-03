@@ -107,6 +107,9 @@
         <activity
             android:screenOrientation="portrait"
             android:name=".rv.headandbottom.AddHeadRecyclerViewActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".kotlin.KotlinTestActivity" />
 
     </application>
 

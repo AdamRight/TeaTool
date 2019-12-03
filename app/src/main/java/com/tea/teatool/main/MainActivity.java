@@ -26,6 +26,7 @@ import com.tea.teatool.flow.FlowActivity;
 import com.tea.teatool.iocannotate.IOCAnnotateActivity;
 import com.tea.teatool.jsconnect.JsConnectActivity;
 import com.tea.teatool.keyboard.KeyBoardActivity;
+import com.tea.teatool.kotlin.KotlinTestActivity;
 import com.tea.teatool.letterindex.LetterIndexActivity;
 import com.tea.teatool.loadingball.BallRotateActivity;
 import com.tea.teatool.loadingshape.ShapeLoadActivity;
@@ -192,6 +193,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add(new MainListBean("RecyclerView基本使用", BaseUseRVActivity.class));
         mDatas.add(new MainListBean("多种类型条目RecyclerView", TypeRVActivity.class));
         mDatas.add(new MainListBean("给RecyclerView添加头部", AddHeadRecyclerViewActivity.class));
+        mDatas.add(new MainListBean("Kotlin", KotlinTestActivity.class));
 
     }
 
