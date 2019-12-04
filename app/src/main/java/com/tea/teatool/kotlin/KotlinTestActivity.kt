@@ -17,6 +17,11 @@ class KotlinTestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kotlin_test)
         kt_tv.text = stringH
+
+
+        var strArrays = arrayOf("1", "2", "", "", "3", "4")
+        strArrays.filter { it.isNotEmpty() }.forEach{ println(it)}
+
     }
 
 }
