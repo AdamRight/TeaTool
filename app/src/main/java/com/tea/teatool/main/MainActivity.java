@@ -44,6 +44,7 @@ import com.tea.teatool.teaeventbus.TeaEventBusActivity;
 import com.tea.teatool.teahttp.TeaHttpActivity;
 import com.tea.teatool.teahttp.TeaOkUpFileActivity;
 import com.tea.teatool.tearatingbar.TeaRatingBarActivity;
+import com.tea.teatool.tearx.TeaRxActivity;
 import com.tea.teatool.teatextview.TeaTextViewActivity;
 import com.tea.teatool.thumbup.ThumbUpActivity;
 import com.tea.teatool.verticaldrag.VerticalDragActivity;
@@ -194,6 +195,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add(new MainListBean("多种类型条目RecyclerView", TypeRVActivity.class));
         mDatas.add(new MainListBean("给RecyclerView添加头部", AddHeadRecyclerViewActivity.class));
         mDatas.add(new MainListBean("Kotlin", KotlinTestActivity.class));
+        mDatas.add(new MainListBean("手写实现RxJava", TeaRxActivity.class));
 
     }
 

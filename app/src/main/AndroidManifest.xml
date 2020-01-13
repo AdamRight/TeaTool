@@ -105,11 +105,14 @@
             android:name=".rv.type.TypeRVActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:screenOrientation="portrait"
-            android:name=".rv.headandbottom.AddHeadRecyclerViewActivity" />
+            android:name=".rv.headandbottom.AddHeadRecyclerViewActivity"
+            android:screenOrientation="portrait" />
         <activity
-            android:screenOrientation="portrait"
-            android:name=".kotlin.KotlinTestActivity" />
+            android:name=".kotlin.KotlinTestActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".tearx.TeaRxActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 
