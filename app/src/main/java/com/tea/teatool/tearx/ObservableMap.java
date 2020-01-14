@@ -1,11 +1,11 @@
 package com.tea.teatool.tearx;
 
-class ObservableMap<T, R> extends Observable<R> {
+class ObservableMap<T, R> extends TeaObservable<R> {
 
-    final Observable<T> source;
+    final TeaObservable<T> source;
     final Function<T, R> function;
 
-    public ObservableMap(Observable<T> source, Function<T, R> function) {
+    public ObservableMap(TeaObservable<T> source, Function<T, R> function) {
         this.source = source;
         this.function = function;
     }

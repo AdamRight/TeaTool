@@ -1,13 +1,12 @@
 package com.tea.teatool.tearx;
 
-class ObservableJust<T> extends Observable{
+class ObservableJust<T> extends TeaObservable {
 
     private T item;
 
     public ObservableJust(T item) {
         this.item = item;
     }
-
 
     @Override
     protected void subscribeActual(Observer observer) {
@@ -16,12 +15,12 @@ class ObservableJust<T> extends Observable{
         scalarDisposable.run();
     }
 
-    public class ScalarDisposable{
+    public class ScalarDisposable<T>{
 
-        private Observer observer;
+        private Observer<T> observer;
         private T item;
 
-        public ScalarDisposable(Observer observer, T item) {
+        public ScalarDisposable(Observer<T> observer, T item) {
             this.observer = observer;
             this.item = item;
         }

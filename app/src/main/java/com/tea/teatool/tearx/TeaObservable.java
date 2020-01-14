@@ -5,17 +5,25 @@ package com.tea.teatool.tearx;
  *
  * @param <T>
  */
-public abstract class Observable<T> implements ObservableSource<T> {
+public abstract class TeaObservable<T> implements ObservableSource<T> {
 
-    public static <T> Observable<T> just(T item) {
+    public static <T> TeaObservable<T> just(T item) {
         return onAssembly(new ObservableJust<T>(item));
     }
 
-    public <R> Observable<R> map(Function<T, R> function) {
+    public <R> TeaObservable<R> map(Function<T, R> function) {
         return onAssembly(new ObservableMap<>(this, function));
     }
 
-    private static <T> Observable<T> onAssembly(Observable<T> observable) {
+    public TeaObservable<T> subscribeOn(Schedulers schedulers){
+        return onAssembly(new ObservableSchedulers(this,schedulers));
+    }
+
+    public TeaObservable<T> observeOn(Schedulers schedulers){
+        return onAssembly(new ObserverOnObservable(this,schedulers));
+    }
+
+    private static <T> TeaObservable<T> onAssembly(TeaObservable<T> observable) {
         return observable;
     }
 

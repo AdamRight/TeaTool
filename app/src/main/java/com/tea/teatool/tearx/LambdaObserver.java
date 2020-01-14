@@ -15,7 +15,11 @@ class LambdaObserver<T> implements Observer<T>{
 
     @Override
     public void onNext(T item) {
-        onNext.accept(item);
+        try {
+            onNext.accept(item);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

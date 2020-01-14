@@ -7,8 +7,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.tea.teatool.R;
 
@@ -27,63 +27,56 @@ public class TeaRxActivity extends AppCompatActivity {
         imageview = findViewById(R.id.image_view);
 
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Observable.just("http://img.taopic.com/uploads/allimg/130331/240460-13033106243430.jpg")
-                        .map(new Function<String, Bitmap>() {
-                            @Override
-                            public Bitmap apply(String urlString) throws Exception {
-                                URL url = new URL(urlString);
-                                URLConnection urlConnection = url.openConnection();
-                                InputStream inputStream = urlConnection.getInputStream();
-                                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                                return bitmap;
-                            }
-                        })
-                        .map(new Function<Bitmap, Bitmap>() {
-                            @Override
-                            public Bitmap apply(Bitmap bitmap){
-                                Bitmap bitmapWM = createWaterMark(bitmap, "WaterMark");
-                                return bitmapWM;
-                            }
-                        })
-                        //.subscribeOn(Schedulers.io())
-                        //.observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Consumer<Bitmap>() {
-                            @Override
-                            public void accept(final Bitmap bitmap){
-
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        imageview.setImageBitmap(bitmap);
-                                    }
-                                });
-                            }
-                        });
-            }
-        }).start();
+        TeaObservable.just("http://img.taopic.com/uploads/allimg/130331/240460-13033106243430.jpg")
+                .map(new Function<String, Bitmap>() {
+                    @Override
+                    public Bitmap apply(String urlString) throws Exception {
+                        Log.d("-t-t-t-apply1",Thread.currentThread().getName());
+                        URL url = new URL(urlString);
+                        URLConnection urlConnection = url.openConnection();
+                        InputStream inputStream = urlConnection.getInputStream();
+                        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                        return bitmap;
+                    }
+                })
+                .map(new Function<Bitmap, Bitmap>() {
+                    @Override
+                    public Bitmap apply(Bitmap bitmap) {
+                        Log.d("-t-t-t-apply2",Thread.currentThread().getName());
+                        Bitmap bitmapWM = createWaterMark(bitmap, "WaterMark");
+                        return bitmapWM;
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.mainThread())
+                .subscribe(new Consumer<Bitmap>() {
+                    @Override
+                    public void accept(final Bitmap bitmap) {
+                        Log.d("-t-t-t-onNext",Thread.currentThread().getName());
+                        imageview.setImageBitmap(bitmap);
+                    }
+                });
 
 
-
-
-        Observable.just("fdsf").subscribe(new Observer<String>() {
+        TeaObservable.just("fdsf").subscribe(new Observer<String>() {
             @Override
             public void onSubscribe() {
-                Toast.makeText(TeaRxActivity.this,"onSubscribe",Toast.LENGTH_SHORT).show();
+                Log.d("-t-t-t-onSubscribe","");
             }
+
             @Override
             public void onNext(String s) {
-                Toast.makeText(TeaRxActivity.this,"onNext：：" + s,Toast.LENGTH_SHORT).show();
+                Log.d("-t-t-t-onNext:",s);
             }
+
             @Override
             public void onError(Throwable e) {
-                Toast.makeText(TeaRxActivity.this,"onError",Toast.LENGTH_SHORT).show();
+                Log.d("-t-t-t-onError","onError" + e);
             }
+
             @Override
             public void onComplete() {
-                Toast.makeText(TeaRxActivity.this,"onComplete",Toast.LENGTH_SHORT).show();
+                Log.d("-t-t-t-onComplete","onComplete");
             }
         });
 
