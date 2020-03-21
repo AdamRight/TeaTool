@@ -18,5 +18,12 @@
         <item name="overlapAnchor">false</item>
     </style>
 
+    <style name="MenuPathIvgStyle">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginRight">50dp</item>
+        <item name="android:layout_marginBottom">50dp</item>
+    </style>
+
 
 </resources>

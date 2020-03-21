@@ -112,9 +112,12 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".tearx.TeaRxActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".main.FunctionDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pathMenu.PathMenuActivity"
             android:screenOrientation="portrait"/>
 
     </application>

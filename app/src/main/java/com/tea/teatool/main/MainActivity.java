@@ -134,9 +134,10 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
 
     private void generateDatas() {
         mDatas.add(new MainListBean("自定义View", 1));
-        mDatas.add(new MainListBean("系统架构", 2));
-        mDatas.add(new MainListBean("web", 3));
-        mDatas.add(new MainListBean("其他", 4));
+        mDatas.add(new MainListBean("自定义控件实战", 2));
+        mDatas.add(new MainListBean("系统架构", 3));
+        mDatas.add(new MainListBean("web", 4));
+        mDatas.add(new MainListBean("其他", 5));
     }
 
     @Override

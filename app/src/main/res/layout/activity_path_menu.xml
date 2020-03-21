@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pathMenu.PathMenuActivity">
+
+    <ImageView
+        android:id="@+id/path_menu"
+        style="@style/MenuPathIvgStyle"
+        android:background="@mipmap/ic_launcher_round"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/path_menu_item1"
+        style="@style/MenuPathIvgStyle"
+        android:background="@mipmap/path_menu_circle1"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/path_menu_item2"
+        style="@style/MenuPathIvgStyle"
+        android:background="@mipmap/path_menu_circle2"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/path_menu_item3"
+        style="@style/MenuPathIvgStyle"
+        android:background="@mipmap/path_menu_circle3"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/path_menu_item4"
+        style="@style/MenuPathIvgStyle"
+        android:background="@mipmap/path_menu_circle4"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/path_menu_item5"
+        style="@style/MenuPathIvgStyle"
+        android:background="@mipmap/path_menu_circle5"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

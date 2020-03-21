@@ -23,6 +23,7 @@ import com.tea.teatool.loadingshape.ShapeLoadActivity;
 import com.tea.teatool.mazelock.MazeLockActivity;
 import com.tea.teatool.mvp.MvpActivity;
 import com.tea.teatool.parallax.ParallaxActivity;
+import com.tea.teatool.pathMenu.PathMenuActivity;
 import com.tea.teatool.rv.baseuse.BaseUseRVActivity;
 import com.tea.teatool.rv.headandbottom.AddHeadRecyclerViewActivity;
 import com.tea.teatool.rv.type.TypeRVActivity;
@@ -96,6 +97,9 @@ public class FunctionDetailActivity extends AppCompatActivity implements MainAda
                 mDatas.add(new MainListBean("自定义小球旋转加载动画", BallRotateActivity.class));
                 break;
             case 2:
+                mDatas.add(new MainListBean("菜单展开路径动画", PathMenuActivity.class));
+                break;
+            case 3:
                 mDatas.add(new MainListBean("手写实现Butterknife", ButterknifeActivity.class));
                 mDatas.add(new MainListBean("手写实现EventBus", TeaEventBusActivity.class));
                 mDatas.add(new MainListBean("造轮子OkHttp", TeaHttpActivity.class));
@@ -108,11 +112,11 @@ public class FunctionDetailActivity extends AppCompatActivity implements MainAda
                 mDatas.add(new MainListBean("Kotlin", KotlinTestActivity.class));
                 mDatas.add(new MainListBean("手写实现RxJava", TeaRxActivity.class));
                 break;
-            case 3:
+            case 4:
                 mDatas.add(new MainListBean("webshop", WebShopActivity.class));
                 mDatas.add(new MainListBean("js相互传参", JsConnectActivity.class));
                 break;
-            case 4:
+            case 5:
                 mDatas.add(new MainListBean("自定义键盘", KeyBoardActivity.class));
                 mDatas.add(new MainListBean("自定义流式布局", FlowActivity.class));
                 mDatas.add(new MainListBean("spannable部分文字多个点击事件", SpannableClickActivity.class));
