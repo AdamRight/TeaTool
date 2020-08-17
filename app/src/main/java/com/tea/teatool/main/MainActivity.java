@@ -138,6 +138,7 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.OnIte
         mDatas.add(new MainListBean("系统架构", 3));
         mDatas.add(new MainListBean("web", 4));
         mDatas.add(new MainListBean("其他", 5));
+        mDatas.add(new MainListBean("架构篇", 6));
     }
 
     @Override

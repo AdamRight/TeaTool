@@ -13,6 +13,8 @@ import com.tea.teatool.circleload.CircleLoadingActivity;
 import com.tea.teatool.cliptext.ClipTextActivity;
 import com.tea.teatool.dragmsg.DragMsgActivity;
 import com.tea.teatool.flow.FlowActivity;
+import com.tea.teatool.frame.mvc.MvcActivity;
+import com.tea.teatool.frame.mvp1.MvpActivity1;
 import com.tea.teatool.iocannotate.IOCAnnotateActivity;
 import com.tea.teatool.jsconnect.JsConnectActivity;
 import com.tea.teatool.keyboard.KeyBoardActivity;
@@ -120,6 +122,11 @@ public class FunctionDetailActivity extends AppCompatActivity implements MainAda
                 mDatas.add(new MainListBean("自定义键盘", KeyBoardActivity.class));
                 mDatas.add(new MainListBean("自定义流式布局", FlowActivity.class));
                 mDatas.add(new MainListBean("spannable部分文字多个点击事件", SpannableClickActivity.class));
+                break;
+
+            case 6:
+                mDatas.add(new MainListBean("mvc", MvcActivity.class));
+                mDatas.add(new MainListBean("mvp实现", MvpActivity1.class));
                 break;
         }
     }
