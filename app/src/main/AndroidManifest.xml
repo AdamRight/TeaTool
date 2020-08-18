@@ -21,11 +21,14 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".frame.mvp2.Mvp2Activity"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".frame.mvc.MvcActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".frame.mvp1.MvpActivity1"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".keyboard.KeyBoardActivity"
             android:screenOrientation="portrait" />

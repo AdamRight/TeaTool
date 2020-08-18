@@ -15,6 +15,7 @@ import com.tea.teatool.dragmsg.DragMsgActivity;
 import com.tea.teatool.flow.FlowActivity;
 import com.tea.teatool.frame.mvc.MvcActivity;
 import com.tea.teatool.frame.mvp1.MvpActivity1;
+import com.tea.teatool.frame.mvp2.Mvp2Activity;
 import com.tea.teatool.iocannotate.IOCAnnotateActivity;
 import com.tea.teatool.jsconnect.JsConnectActivity;
 import com.tea.teatool.keyboard.KeyBoardActivity;
@@ -125,8 +126,9 @@ public class FunctionDetailActivity extends AppCompatActivity implements MainAda
                 break;
 
             case 6:
-                mDatas.add(new MainListBean("mvc", MvcActivity.class));
-                mDatas.add(new MainListBean("mvp实现", MvpActivity1.class));
+                mDatas.add(new MainListBean("MVC", MvcActivity.class));
+                mDatas.add(new MainListBean("MVP实现", MvpActivity1.class));
+                mDatas.add(new MainListBean("MVP基础框架搭建", Mvp2Activity.class));
                 break;
         }
     }
