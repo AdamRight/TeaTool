@@ -23,6 +23,12 @@ import com.tea.teatool.frame.mvp1.utils.Constant;
  *
  * MVP中Activity是view层
  *
+ * 	M: Model 数据层，访问网络数据都写在这里面
+ * 	V: View 界面层，与 View 相关的一些操作都写在这里面，Activity , Fragment , ViewGroup
+ * 	P: Presenter 解耦关联层（Model - View），可能还有一些额外的逻辑：数据的一些处理逻辑
+ *
+ *  P层的作用就是处理M和V之间的交互。
+ *
  */
 public class MvpActivity1 extends AppCompatActivity implements DownloaderContract.PV {
 

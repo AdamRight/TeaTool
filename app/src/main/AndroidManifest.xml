@@ -20,9 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".frame.mvvm1.Mvvm1Activity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".frame.mvp2.Mvp2Activity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".frame.mvc.MvcActivity"
             android:screenOrientation="portrait" />

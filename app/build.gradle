@@ -21,7 +21,10 @@ android {
         }
     }
 
-
+    // 添加DataBinding依赖
+    dataBinding{
+        enabled = true
+    }
 }
 
 dependencies {

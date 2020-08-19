@@ -129,6 +129,7 @@ public class FunctionDetailActivity extends AppCompatActivity implements MainAda
                 mDatas.add(new MainListBean("MVC", MvcActivity.class));
                 mDatas.add(new MainListBean("MVP实现", MvpActivity1.class));
                 mDatas.add(new MainListBean("MVP基础框架搭建", Mvp2Activity.class));
+                mDatas.add(new MainListBean("MVVM+dataBinding", Mvp2Activity.class));
                 break;
         }
     }
